@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { key } from '../../helpers/key';
+import { key } from '../../apikey';
 import * as API from '../../helpers/apiCalls';
 import { addMovies } from '../../actions';
 import CardContainer from '../../containers/CardContainer'
