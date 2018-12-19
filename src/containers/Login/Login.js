@@ -23,7 +23,7 @@ export class Login extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    const user = await API.fetchUser('http://localhost:3000/api/users', {
+    const response = await API.fetchUser('http://localhost:3000/api/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -34,7 +34,16 @@ export class Login extends Component {
       })
     });
 
-    this.props.addUserToStore(user.data);
+    if (response) {
+      this.props.addUserToStore(response.data);
+      this.setState({
+        errorMessage: ''
+      });
+    } else {
+      this.setState({
+        errorMessage: 'Email and Password do not match'
+      });
+    }
   };
 
   render() {
