@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import { key } from '../../helpers/key';
 import * as API from '../../helpers/apiCalls';
 import { addMovies } from '../../actions';
+import CardContainer from '../../containers/CardContainer'
 
 import './App.css';
 
@@ -17,7 +17,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>MovieStalker</h1>
+        <h1>Movie Stalker</h1>
+        <CardContainer />
       </div>
     );
   }
