@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { key } from '../../apikey';
 import * as API from '../../helpers/apiCalls';
 import { addMovies } from '../../actions';
-import CardContainer from '../../containers/CardContainer'
-import '../../styles/main.scss'
+import CardContainer from '../../containers/CardContainer/CardContainer';
+import Login from '../../containers/Login/Login';
+import '../../styles/main.scss';
 
 import './App.css';
 
@@ -19,6 +20,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Movie Stalker</h1>
+        <Login />
         <CardContainer />
       </div>
     );

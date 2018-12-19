@@ -4,3 +4,7 @@ export const addMovies = movieArray => {
     movies: movieArray
   };
 };
+
+//ADDING A NEW USER
+
+//FETCHING USER DATA ON LOGIN
