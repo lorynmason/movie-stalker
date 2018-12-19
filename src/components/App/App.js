@@ -4,6 +4,7 @@ import { key } from '../../helpers/key';
 import * as API from '../../helpers/apiCalls';
 import { addMovies } from '../../actions';
 import CardContainer from '../../containers/CardContainer'
+import '../../styles/main.scss'
 
 import './App.css';
 
