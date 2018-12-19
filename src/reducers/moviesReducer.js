@@ -7,7 +7,7 @@ export const moviesReducer = (state = [], action) => {
           releaseDate: movie.release_date,
           overview: movie.overview,
           id: movie.id,
-          poster: movie.poster_path,
+          poster: 'https://image.tmdb.org/t/p/w500///'+ movie.poster_path,
           isFavorite: false
         };
       });
