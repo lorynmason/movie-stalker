@@ -9,11 +9,9 @@ export const fetchMovies = async url => {
 };
 
 export const fetchUser = async (url, options) => {
-  try {
-    const response = await fetch(url, options);
+  const response = await fetch(url, options);
+  if (response.ok) {
     const user = await response.json();
     return user;
-  } catch (err) {
-    throw new Error('error fetching user');
   }
 };
