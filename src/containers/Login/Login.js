@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import * as API from '../../helpers/apiCalls';
+import { loginUser } from '../../actions';
 
 export class Login extends Component {
   constructor() {
     super();
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      errorMessage: ''
     };
   }
 
@@ -31,7 +33,8 @@ export class Login extends Component {
         password: this.state.password
       })
     });
-    console.log(user);
+
+    this.props.addUserToStore(user.data);
   };
 
   render() {
@@ -54,13 +57,14 @@ export class Login extends Component {
           />
           <input type="submit" />
         </form>
+        <p>{this.state.errorMessage}</p>
       </div>
     );
   }
 }
 
 export const mapDispatchToProps = dispatch => ({
-  //dispatch action creators
+  addUserToStore: user => dispatch(loginUser(user))
 });
 
 export default connect(
