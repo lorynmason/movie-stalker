@@ -4,7 +4,7 @@ import { key } from '../../apikey';
 import * as API from '../../helpers/apiCalls';
 import { addMovies } from '../../actions';
 import CardContainer from '../../containers/CardContainer/CardContainer';
-import { Menu } from '../../components/Menu/Menu'
+import Menu from '../../components/Menu/Menu'
 import Login from '../../containers/Login/Login';
 import '../../styles/main.scss';
 
