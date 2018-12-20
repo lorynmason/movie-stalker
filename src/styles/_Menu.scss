@@ -10,15 +10,15 @@
   p {
     font-size: 2.3em;
     color: white;
-    margin: 15px 80px 0px 0px;
+    margin: 12px 100px 0px 0px;
     font-weight: bold;
-    text-shadow: #000 4px 2px 4px;
+    // text-shadow: #000 4px 2px 4px;
   }
   &:hover {
     cursor: pointer;
     p {
       color:#000;
-      text-shadow: none;
+      // text-shadow: none;
     }
     height: 125px;
     width: 410px;
