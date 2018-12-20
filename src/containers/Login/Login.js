@@ -51,6 +51,7 @@ export class Login extends Component {
   handleClick = async e => {
     const { email, password, name } = this.state;
     e.preventDefault();
+    //try
     const response = await API.postUser('http://localhost:3000/api/users/new', {
       method: 'POST',
       headers: {
@@ -63,18 +64,20 @@ export class Login extends Component {
       })
     });
 
+    const jsonResponse = await response.json();
     if (response.ok) {
-      const jsonResponse = await response.json();
-      this.props.addUserToStore({ email, password, name, id: jsonResponse.id });
+      this.props.addUserToStore({email, password, name, id: jsonResponse.id});
       this.setState({
         errorMessage: ''
       });
     } else {
+      debugger
       this.setState({
         errorMessage: 'Email has already been used'
       });
     }
-  };
+    //catch throw error
+  }
 
   render() {
     const { email, password, name } = this.state;

@@ -1,10 +1,16 @@
 export const fetchMovies = async url => {
   try {
     const response = await fetch(url);
-    const movies = await response.json();
-    return movies.results;
+    if (response.ok) {
+      const movies = await response.json();
+      return movies.results;
+    } else {
+      throw new Error('error fetching movies')
+    }
   } catch (err) {
-    throw new Error('error fetching movies');
+    // throw new Error('error fetching movies');
+    console.log('catch')
+    console.log(err)
   }
 };
 
