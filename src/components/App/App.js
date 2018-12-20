@@ -22,7 +22,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1 className="header">Movie Stalker</h1>
+        <h1 className="header">
+          <span className="movie">Movie</span> 
+          <span className="stalker">Stalker</span>
+        </h1>
         <Menu />
         <Switch>
           <Route exact path="/" component={CardContainer} />
