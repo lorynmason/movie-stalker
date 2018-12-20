@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Login from '../../containers/Login/Login';
 import { Link } from 'react-router-dom';
+import { logoutUser } from '../../actions';
+import { connect } from 'react-redux';
 
 class Menu extends Component {
   constructor() {
@@ -14,7 +15,11 @@ class Menu extends Component {
     this.setState({ fullMenu: !this.state.fullMenu });
   };
 
-  render() {
+  handleClick = () => {
+    this.props.logoutUser();
+  }
+
+  render(){
     if (!this.state.fullMenu) {
       return (
         <div className="menu" onClick={this.toggleMenu}>
@@ -25,6 +30,7 @@ class Menu extends Component {
       return (
         <div className="full-menu">
           <button onClick={this.toggleMenu}>X</button>
+          <p onClick={this.handleClick}>Logout</p>
           <p>
             <Link to="/login" onClick={this.toggleMenu}>
               Login
@@ -41,4 +47,8 @@ class Menu extends Component {
   }
 }
 
-export default Menu;
+const mapDispatchToProps = (dispatch) => ({
+    logoutUser: () => dispatch(logoutUser())
+  });
+
+export default connect(null, mapDispatchToProps)(Menu);
