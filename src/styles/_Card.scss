@@ -1,4 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=Special+Elite');
+
 .card {
-  width: 400px;
+  font-family: 'Special Elite', cursive;
   background-repeat: no-repeat;
+  height: 600px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  box-shadow: #931115c0 4px 4px 10px,#000 -4px -2px 10px ;
+  div {
+    color: transparent;
+    height: 70%;
+    margin-top: 200px;
+  }
+  &:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    div {
+      background: #931115b0;
+      color: white;
+    }
+  }
+  h1 {
+    font-size: 2.5em;
+    padding: 10px;
+  }
+  p{
+    font-size: 1.1em;
+    margin: 5px 15px;
+    text-align: center;
+  }
+  button {
+    width: 100px;
+    outline: none;
+    border: none;
+    background: transparent;
+    padding-left: 335px;
+    i {
+      font-size: 3.5em;
+      color: #931115;
+      padding: 15px;
+      text-shadow: #000 4px 3px 4px;
+      &:hover {
+        cursor: pointer;
+        color: #fff;
+        text-shadow: #a80308 4px 3px 4px;
+      }
+    }
+  }
 }

@@ -4,7 +4,7 @@ import { Card } from '../../components/Card/Card';
 
 export const CardContainer = ({ movies }) => {
   const cards = movies.map(movie => <Card {...movie} />);
-  return <div>{cards}</div>;
+  return <div className='cardContainer'>{cards}</div>;
 };
 
 export const mapStateToProps = state => ({

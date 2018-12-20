@@ -1,0 +1,97 @@
+.menu {
+  background: url(https://ya-webdesign.com/images/blood-smear-png-4.png);
+  height: 120px;
+  width: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: -120px 60px 0px 0px;
+  float: right;
+  filter: drop-shadow(16px 16px 20px #585757);
+  p {
+    font-size: 2.3em;
+    color: white;
+    margin: 12px 100px 0px 0px;
+    font-weight: bold;
+  }
+  &:hover {
+    cursor: pointer;
+    p {
+      text-shadow: #000 7px 0px 3px;
+      color: transparent;
+    }
+    filter: grayscale(30%);
+    filter: drop-shadow(16px 16px 20px #931115)
+  }
+}
+
+.full-menu {
+  width: 900px;
+  position: absolute;
+  height: 800px;
+  top: -240px;
+  right: -140px;
+  z-index: 1;
+  background: url(https://www.picpng.com/images/large/blood-hd-png-39827);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  animation-name: zoomIn;
+  animation-duration: .7s;
+  animation-fill-mode: both;
+  p {
+    margin: 5px;
+    animation-name: fadeIn;
+    animation-duration: 2s;
+    animation-fill-mode: both;
+    color: white;
+    text-shadow: #000 5px 4px 6px;
+    font-size: 2em;
+    animation-delay: .5s;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    &:hover {
+      cursor: pointer;
+      text-shadow: #000 7px 0px 3px;
+      color: transparent;
+    }
+  }
+
+  button {
+    animation-name: fadeIn;
+    animation-duration: 2s;
+    animation-fill-mode: both;
+    animation-delay: .5s;
+    margin: -60px 0px 15px;
+    outline: none;
+    border: none;
+    background: transparent;
+    font-size: 1.5em;
+    text-shadow: #000 5px 2px 3px;
+    color: #fff;
+    &:hover {
+      cursor: pointer;
+      color: transparent;
+    }
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes zoomIn {
+    0% {
+      opacity: 0;
+      transform: 
+        rotate(.05turn) 
+        scale(.4)
+        translate(100px, -40%);
+    }
+  }
+}
