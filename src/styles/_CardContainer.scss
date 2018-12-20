@@ -1,12 +1,12 @@
 .cardContainer {
   width: 100%;
   max-width: 1500px;
-  padding: 50px 0 80px;
+  padding: 50px 5px 80px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 400px);
-  grid-gap: 80px 30px;
+  grid-template-columns: repeat(auto-fit, 380px);
+  grid-gap: 80px 0;
   justify-content: space-around;
-  grid-auto-flow: dense;
+  // grid-auto-flow: dense;
   margin: 0 auto;
 }
 
@@ -16,4 +16,5 @@ html {
   background-repeat: no-repeat;
   background-position: 50% 100%;
   background-attachment: fixed;
+  overflow-x: hidden;
 }
