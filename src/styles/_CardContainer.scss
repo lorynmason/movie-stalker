@@ -1,0 +1,11 @@
+.cardContainer {
+  width: 100%;
+  max-width: 1500px;
+  padding: 80px 0 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 400px);
+  grid-gap: 80px 30px;
+  justify-content: space-around;
+  grid-auto-flow: dense;
+  margin: 0 auto;
+}
