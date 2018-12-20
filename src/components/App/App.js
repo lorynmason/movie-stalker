@@ -22,7 +22,7 @@ class App extends Component {
       <div className="App">
         <h1 className="header">Movie Stalker</h1>
         <Menu />
-        <Login />
+        {/* <Login /> */}
         <CardContainer />
       </div>
     );
