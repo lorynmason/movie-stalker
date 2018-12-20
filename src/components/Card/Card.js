@@ -3,7 +3,7 @@ import React from 'react'
 export const Card = ({ title, releaseDate, overview, id, poster, isFavorite }) => {
   return(
     <div className="card" key={id} style={{backgroundImage:`URL(${poster})`}}>
-    <button><i className="fas fa-tint"></i></button>
+    <button><i className="far fa-heart"></i></button>
       <div>
         <h1>{title}</h1>
         <p>{releaseDate}</p>
