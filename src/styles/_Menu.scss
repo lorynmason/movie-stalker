@@ -44,7 +44,8 @@
   animation-name: zoomIn;
   animation-duration: .7s;
   animation-fill-mode: both;
-  p {
+  .menu-item {
+    text-decoration: none;
     margin: 5px;
     animation-name: fadeIn;
     animation-duration: 2s;

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import * as API from '../../helpers/apiCalls';
 import { loginUser } from '../../actions';
 
@@ -82,7 +81,7 @@ export class Login extends Component {
   render() {
     const { email, password, name } = this.state;
     return (
-      <div>
+      <div className="form-container">
         <form onSubmit={this.handleSubmit}>
           <h1>LOGIN</h1>
           <input
@@ -108,7 +107,7 @@ export class Login extends Component {
             onChange={this.handleInputChange}
             name="password"
           />
-          <input type="submit" />
+          <button>Submit</button>
         </form>
         <button onClick={this.handleClick}>Create User</button>
         <p>{this.state.errorMessage}</p>

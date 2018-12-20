@@ -1,0 +1,43 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 400px;
+  background: #931115b9;
+  align-items: center;
+  margin: 100px auto 0;
+  // border: #2b2a2a 4px solid;
+  box-shadow: #050505 -4px -4px 10px;
+  border-radius: 15px;
+  h1{
+    font-size: 3em;
+    font-family: 'Special Elite', cursive;
+    padding: 30px 0px 10px;
+  }
+  button {
+    width: 150px;
+    background: black;
+    color: #fff;
+    font-family: 'Special Elite', cursive;
+    font-size: 1em;
+    padding: 5px;
+    border: none;
+    margin: 15px;
+    box-shadow: #2b2a2a 5px 5px 10px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    font-size: 1.5em;
+    align-items: center;
+    input {
+      margin: 10px;
+      height: 25px;
+      &::placeholder {
+        font-family: 'Special Elite', cursive; 
+        padding-left: 5px;
+      }
+    }
+  }
+}

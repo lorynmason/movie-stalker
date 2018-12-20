@@ -30,14 +30,14 @@ class Menu extends Component {
       return (
         <div className="full-menu">
           <button onClick={this.toggleMenu}>X</button>
-          <p onClick={this.handleClick}>Logout</p>
+          <p className='menu-item' onClick={this.handleClick}>Logout</p>
           <p>
-            <Link to="/login" onClick={this.toggleMenu}>
+            <Link className='menu-item' to="/login" onClick={this.toggleMenu}>
               Login
             </Link>
           </p>
           <p>
-            <Link to="/favorites" onClick={this.toggleMenu}>
+            <Link className='menu-item' to="/favorites" onClick={this.toggleMenu}>
               Stalked:0
             </Link>
           </p>
