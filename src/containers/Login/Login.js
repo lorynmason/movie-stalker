@@ -62,9 +62,9 @@ export class Login extends Component {
         password
       })
     })
+
     if (response.ok) {
       const jsonResponse = await response.json();
-      console.log(jsonResponse)
       this.props.addUserToStore({email, password, name, id: jsonResponse.id});
       this.setState({
         errorMessage: ''
@@ -74,8 +74,6 @@ export class Login extends Component {
         errorMessage: 'Email has already been used'
       });
     }
-
-    console.log(response)
   }
 
   render() {
