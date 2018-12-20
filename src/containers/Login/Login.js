@@ -10,7 +10,8 @@ export class Login extends Component {
     this.state = {
       email: '',
       password: '',
-      errorMessage: ''
+      errorMessage: '',
+      name: ''
     };
   }
 
@@ -22,6 +23,7 @@ export class Login extends Component {
   };
 
   handleSubmit = async e => {
+    const { email, password } = this.state;
     e.preventDefault();
     const response = await API.fetchUser('http://localhost:3000/api/users', {
       method: 'POST',
@@ -29,8 +31,8 @@ export class Login extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password
+        email,
+        password
       })
     });
 
@@ -46,26 +48,62 @@ export class Login extends Component {
     }
   };
 
+  handleClick = async (e) => {
+    const { email, password, name } = this.state;
+    e.preventDefault();
+    const response = await API.postUser('http://localhost:3000/api/users/new', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name, 
+        email,
+        password
+      })
+    })
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      console.log(jsonResponse)
+      this.props.addUserToStore({email, password, name, id: jsonResponse.id});
+      this.setState({
+        errorMessage: ''
+      });
+    } else {
+      this.setState({
+        errorMessage: 'Email has already been used'
+      });
+    }
+
+    console.log(response)
+  }
+
   render() {
-    const { email, password } = this.state;
+    const { email, password, name } = this.state;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <h1>LOGIN</h1>
+          <input type="text" placeholder="Enter Name" value={name} onChange={this.handleInputChange} name="name" />
           <input
-            type="text"
+            type="email"
+            placeholder="E-mail"
             value={email}
             onChange={this.handleInputChange}
             name="email"
+            // pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
+            // required
           />
           <input
-            type="text"
+            type="password"
+            placeholder="password"
             value={password}
             onChange={this.handleInputChange}
             name="password"
           />
           <input type="submit" />
         </form>
+        <button onClick={this.handleClick}>Create User</button>
         <p>{this.state.errorMessage}</p>
       </div>
     );

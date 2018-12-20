@@ -15,3 +15,8 @@ export const fetchUser = async (url, options) => {
     return user;
   }
 };
+
+export const postUser = async (url, options) => {
+  const response = await fetch(url, options);
+  return response;
+}
