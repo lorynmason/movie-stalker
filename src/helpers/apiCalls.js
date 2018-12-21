@@ -16,10 +16,11 @@ export const fetchMovies = async url => {
 
 export const fetchUser = async (url, options) => {
   const response = await fetch(url, options);
-  if (response.ok) {
-    const user = await response.json();
-    return user;
-  }
+  // if (response.ok) {
+  //   const result = await response.json();
+  //   return user;
+  // }
+  return response;
 };
 
 export const postUser = async (url, options) => {
