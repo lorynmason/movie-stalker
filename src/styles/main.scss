@@ -1,3 +1,43 @@
+//colors
+$transparentMainColor: #931115c0;
+$mainColor: #931115;
+
+//fonts
+@font-face {
+  font-family: 'scary-arms';
+  src: url('./Scare Arms.otf') format('opentype');
+}
+
+@import url('https://fonts.googleapis.com/css?family=Special+Elite');
+
+//mixins
+@mixin tansparentButton() {
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+@mixin menuItem($fontsize) {
+  font-size: $fontsize;
+  text-shadow: #000 5px 2px 3px;
+  color: #fff;
+  animation-name: fadeIn;
+  animation-duration: 3.5s;
+  &:hover {
+    cursor: pointer;
+    color: transparent;
+  }
+}
+
+@mixin menus($file, $bgPosition, $bgSize, $shadowOffSet, $shadowColor) {
+  background: url($file);
+  font-family: 'Special Elite', cursive;
+  background-size: $bgSize;
+  background-repeat: no-repeat;
+  background-position: $bgPosition;
+  filter: drop-shadow($shadowOffSet 16px 20px $shadowColor);
+}
+
 @import "Header";
 @import "Card";
 @import "Reset";
