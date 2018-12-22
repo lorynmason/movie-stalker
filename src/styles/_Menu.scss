@@ -44,6 +44,7 @@
   animation-name: zoomIn;
   animation-duration: .7s;
   animation-fill-mode: both;
+  filter: drop-shadow(-16px 16px 20px #0a0a0a);
   .menu-item {
     text-decoration: none;
     margin: 5px;
