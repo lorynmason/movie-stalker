@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as API from '../../helpers/apiCalls';
 import { loginUser } from '../../actions';
+import { Redirect } from 'react-router';
 
 export class Login extends Component {
   constructor() {
@@ -93,6 +94,7 @@ export class Login extends Component {
     const { email, password, name, newUser } = this.state;
     let nameInput;
     let buttonText;
+    let page;
     if (newUser) {
       buttonText = 'Create New Account'
       nameInput = (
@@ -108,6 +110,9 @@ export class Login extends Component {
       buttonText = 'Submit';
       nameInput = '';
     }
+    if(this.props.user) {
+      page = <Redirect to='/' />
+    }
 
     return (
       <div className="form-container">
@@ -120,8 +125,6 @@ export class Login extends Component {
             value={email}
             onChange={this.handleInputChange}
             name="email"
-            // pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
-            // required
           />
           <input
             type="password"
@@ -132,18 +135,22 @@ export class Login extends Component {
           />
           <button>{buttonText}</button>
         </form>
-        <a href="" onClick={this.handleNewUser}>Click here to create an account</a>
+        <p classname="create-account"onClick={this.handleNewUser}>Click here to create an account</p>
         <p>{this.state.errorMessage}</p>
+        {page}
       </div>
     );
   }
 }
+export const mapStateToProps = state => ({
+  user: state.user
+})
 
 export const mapDispatchToProps = dispatch => ({
   addUserToStore: user => dispatch(loginUser(user))
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Login);
