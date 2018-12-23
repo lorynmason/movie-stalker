@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as API from '../../helpers/apiCalls';
-import { loginUser } from '../../actions';
 import { Redirect } from 'react-router';
+import { fetchUser } from '../../thunks/fetchUser'
+import { postUser } from '../../thunks/postUser'
 
 export class Login extends Component {
   constructor() {
@@ -26,60 +26,10 @@ export class Login extends Component {
   handleSubmit = async e => {
     e.preventDefault();
     const { email, password, newUser, name } = this.state;
-    let response;
     if (newUser) {
-      response = await API.postUser('http://localhost:3000/api/users/new', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          password
-        })
-      });
+      this.props.addNewUserToStore(email, password, name)
     } else {
-      response = await API.fetchUser('http://localhost:3000/api/users', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email,
-          password
-        })
-      });
-    }
-    this.handleResponse(response)
-  }
-  
-  handleResponse = async (response) => { 
-    const parsedResponse = await response.json();
-    console.log(parsedResponse)
-    switch (parsedResponse.message) {
-      case 'Retrieved ONE User':
-        this.props.addUserToStore(parsedResponse.data);
-        this.setState({
-          errorMessage: '',
-          email: '',
-          password: ''
-        });
-        break;
-      case 'New user created':
-        const { email, password, name } = this.state;
-        this.props.addUserToStore({email, password, name, id: parsedResponse.id});
-        this.setState({
-          errorMessage: '',
-          name: '',
-          email: '',
-          password: ''
-        });
-        break;
-      default: 
-        console.log(response);
-        // errorMessage: 'Email has already been used'
-        // errorMessage: 'Email and Password do not match'
+     this.props.addUserToStore(email, password)
     }
   }
 
@@ -147,7 +97,8 @@ export const mapStateToProps = state => ({
 })
 
 export const mapDispatchToProps = dispatch => ({
-  addUserToStore: user => dispatch(loginUser(user))
+  addUserToStore: (email, password) => dispatch(fetchUser(email, password)),
+  addNewUserToStore: (email, password, name) => dispatch(postUser(email, password, name))
 });
 
 export default connect(
