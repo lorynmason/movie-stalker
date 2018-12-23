@@ -1,14 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Card } from '../../components/Card/Card';
+import { postFavorites } from '../../thunks/postFavorites';
 
-export const CardContainer = ({ movies }) => {
-  const cards = movies.map(movie => <Card {...movie} />);
-  return <div className='cardContainer'>{cards}</div>;
+export const CardContainer = ({ movies, addFavorite, user }) => {
+  const cards = movies.map(movie => (
+    <Card movie={movie} addFavorite={addFavorite} user={user} />
+  ));
+  return <div className="cardContainer">{cards}</div>;
 };
 
 export const mapStateToProps = state => ({
-  movies: state.movies
+  movies: state.movies,
+  user: state.user
 });
 
-export default connect(mapStateToProps)(CardContainer);
+export const mapDispatchToProps = dispatch => ({
+  addFavorite: (movie, userId) => dispatch(postFavorites(movie, userId))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CardContainer);
