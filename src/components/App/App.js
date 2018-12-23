@@ -11,7 +11,6 @@ import { Switch, Route, Redirect, withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import '../../styles/main.scss';
 
-import './App.css';
 
 class App extends Component {
   async componentDidMount() {
