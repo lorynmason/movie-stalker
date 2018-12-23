@@ -125,8 +125,6 @@ export class Login extends Component {
             value={email}
             onChange={this.handleInputChange}
             name="email"
-            // pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
-            // required
           />
           <input
             type="password"
