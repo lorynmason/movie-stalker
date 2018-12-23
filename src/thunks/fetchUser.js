@@ -17,7 +17,7 @@ export const fetchUser = (email, password) => {
         throw Error(response.statusText)
       }
       const result = await response.json()
-      dispatch(loginUser(result.data))
+      dispatch(loginUser({name: result.data.name, id: result.data.id}))
     } catch(err) {
       dispatch(hasErrored(err.message))
     }
