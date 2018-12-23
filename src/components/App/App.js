@@ -8,6 +8,7 @@ import Menu from '../../components/Menu/Menu';
 import Login from '../../containers/Login/Login';
 import { Favorites } from '../Favorites/Favorites';
 import { Switch, Route, Redirect, withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 import '../../styles/main.scss';
 
 import './App.css';
@@ -23,8 +24,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className="header">
-          <span className="movie">Movie</span> 
-          <span className="stalker">Stalker</span>
+          <span className="movie"><Link to="/">Movie</Link></span> 
+          <span className="stalker"><Link to="/">Stalker</Link></span>
         </h1>
         <Menu />
         <Switch>
