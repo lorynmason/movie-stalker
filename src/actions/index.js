@@ -17,3 +17,8 @@ export const logoutUser = () => {
     type: 'LOGOUT_USER'
   }
 }
+
+export const hasErrored =(message) => ({
+  type: 'HAS_ERRORED',
+  message
+})

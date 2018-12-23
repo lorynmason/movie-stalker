@@ -1,4 +1,4 @@
-import { addMovies } from '../actions';
+import { addMovies, hasErrored } from '../actions';
 
 export const fetchMovies = url => {
   return async dispatch => {
@@ -10,7 +10,7 @@ export const fetchMovies = url => {
       const movies = await response.json();
       dispatch(addMovies(movies.results));
     } catch (error) {
-      console.log(error.message);
+      dispatch(hasErrored(error.message));
     }
   };
 };
