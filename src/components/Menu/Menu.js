@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { logoutUser } from '../../actions';
 import { connect } from 'react-redux';
 
-class Menu extends Component {
+export class Menu extends Component {
   constructor() {
     super();
     this.state = {
@@ -17,17 +18,22 @@ class Menu extends Component {
 
   handleClick = () => {
     this.props.logoutUser();
-  }
+  };
 
-  render(){
-    let log = 
-    <p>
-      <Link className='menu-item' to="/login" onClick={this.toggleMenu}>
-        Login
-      </Link>
-    </p>
-    if(this.props.user) {
-      log = <p className='menu-item' onClick={this.handleClick}>Logout</p>
+  render() {
+    let log = (
+      <p>
+        <Link className="menu-item" to="/login" onClick={this.toggleMenu}>
+          Login
+        </Link>
+      </p>
+    );
+    if (this.props.user) {
+      log = (
+        <p className="menu-item" onClick={this.handleClick}>
+          Logout
+        </p>
+      );
     }
     if (!this.state.fullMenu) {
       return (
@@ -39,9 +45,13 @@ class Menu extends Component {
       return (
         <div className="full-menu">
           <button onClick={this.toggleMenu}>X</button>
-            {log}
+          {log}
           <p>
-            <Link className='menu-item' to="/favorites" onClick={this.toggleMenu}>
+            <Link
+              className="menu-item"
+              to="/favorites"
+              onClick={this.toggleMenu}
+            >
               Stalked:0
             </Link>
           </p>
@@ -51,12 +61,20 @@ class Menu extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = state => ({
   user: state.user
-})
+});
 
-const mapDispatchToProps = (dispatch) => ({
-    logoutUser: () => dispatch(logoutUser())
-  });
+export const mapDispatchToProps = dispatch => ({
+  logoutUser: () => dispatch(logoutUser())
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Menu);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Menu);
+
+Menu.propTypes = {
+  user: PropTypes.object,
+  logoutUser: PropTypes.func.isRequired
+};

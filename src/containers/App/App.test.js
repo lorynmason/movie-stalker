@@ -21,7 +21,6 @@ describe('App', () => {
       const mappedProps = mapDispatchToProps(mockDispatch);
 
       mappedProps.fetchMovies(mockUrl);
-
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
   });
