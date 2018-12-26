@@ -39,8 +39,12 @@
       }
     }
   }
-  a {
+  .create-account {
     color: white;
     font-size: 1.2em;
+    text-decoration: #fff solid underline;
+    &:hover{
+      cursor: pointer;
+    }
   }
 }
