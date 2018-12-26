@@ -20,6 +20,15 @@ class Menu extends Component {
   }
 
   render(){
+    let log = 
+    <p>
+      <Link className='menu-item' to="/login" onClick={this.toggleMenu}>
+        Login
+      </Link>
+    </p>
+    if(this.props.user) {
+      log = <p className='menu-item' onClick={this.handleClick}>Logout</p>
+    }
     if (!this.state.fullMenu) {
       return (
         <div className="menu" onClick={this.toggleMenu}>
@@ -30,12 +39,7 @@ class Menu extends Component {
       return (
         <div className="full-menu">
           <button onClick={this.toggleMenu}>X</button>
-          <p className='menu-item' onClick={this.handleClick}>Logout</p>
-          <p>
-            <Link className='menu-item' to="/login" onClick={this.toggleMenu}>
-              Login
-            </Link>
-          </p>
+            {log}
           <p>
             <Link className='menu-item' to="/favorites" onClick={this.toggleMenu}>
               Stalked:0
@@ -47,8 +51,12 @@ class Menu extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  user: state.user
+})
+
 const mapDispatchToProps = (dispatch) => ({
     logoutUser: () => dispatch(logoutUser())
   });
 
-export default connect(null, mapDispatchToProps)(Menu);
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);
