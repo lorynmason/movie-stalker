@@ -5,7 +5,7 @@ import { postFavorites } from '../../thunks/postFavorites';
 
 export const CardContainer = ({ movies, addFavorite, user }) => {
   const cards = movies.map(movie => (
-    <Card movie={movie} addFavorite={addFavorite} user={user} />
+    <Card movie={movie} key={movie.title}addFavorite={addFavorite} user={user} />
   ));
   return <div className="cardContainer">{cards}</div>;
 };

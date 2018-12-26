@@ -45,6 +45,7 @@ export class Login extends Component {
     let nameInput;
     let buttonText;
     let page;
+    let createNewUser = <p className="create-account"onClick={this.handleNewUser}>Click here to create an account</p>
     if (newUser) {
       buttonText = 'Create New Account'
       nameInput = (
@@ -55,7 +56,8 @@ export class Login extends Component {
               onChange={this.handleInputChange}
               name="name"
             />
-      )
+            )
+      createNewUser = ''
     } else {
       buttonText = 'Submit';
       nameInput = '';
@@ -85,7 +87,7 @@ export class Login extends Component {
           />
           <button>{buttonText}</button>
         </form>
-        <p classname="create-account"onClick={this.handleNewUser}>Click here to create an account</p>
+        {createNewUser}
         <p>{this.state.errorMessage}</p>
         {page}
       </div>
