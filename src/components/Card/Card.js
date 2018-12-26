@@ -1,15 +1,45 @@
-import React from 'react'
+import React, { Component } from 'react';
 
-export const Card = ({ title, releaseDate, overview, id, poster, isFavorite }) => {
-  return(
-    <div className="card" key={id} style={{backgroundImage:`URL(${poster})`}}>
-    <button><i className="far fa-heart"></i></button>
-      <div>
-        <h1>{title}</h1>
-        <p>{releaseDate}</p>
-        <p>{overview}</p>
+export class Card extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isFavorite: false
+    };
+  }
+
+  handleClick = () => {
+    if (!this.state.isFavorite) {
+      this.props.addFavorite(this.props.movie, this.props.user.id);
+    }
+    this.setState({
+      isFavorite: !this.state.isFavorite
+    });
+  };
+
+  render() {
+    const {
+      title,
+      release_date,
+      overview,
+      movie_id,
+      poster_path
+    } = this.props.movie;
+    return (
+      <div
+        className="card"
+        key={movie_id}
+        style={{ backgroundImage: `URL(${poster_path})` }}
+      >
+        <button onClick={this.handleClick}>
+          <i className="far fa-heart" />
+        </button>
+        <div>
+          <h1>{title}</h1>
+          <p>{release_date}</p>
+          <p>{overview}</p>
+        </div>
       </div>
-    </div>
-  )
+    );
+  }
 }
-

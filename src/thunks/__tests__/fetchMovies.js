@@ -20,7 +20,12 @@ describe('fetchMovies', () => {
 
     const thunk = fetchMovies(mockUrl);
     await thunk(mockDispatch);
-    expect(mockDispatch).toHaveBeenCalledWith(hasErrored('an error has occured'));
+    expect(mockDispatch).toHaveBeenCalledWith(
+      hasErrored('an error has occured')
+    );
+    const result = await thunk(mockDispatch);
+    console.log(result);
+    expect(result).toEqual('an error has occured');
   });
 
   it.skip('Dispatches the addMovies(moviesArray) action if response is ok', async () => {
@@ -38,6 +43,7 @@ describe('fetchMovies', () => {
 
     const thunk = fetchMovies(mockUrl);
     await thunk(mockDispatch);
+
     expect(mockDispatch).toHaveBeenCalledWith(addMovies(mockMovies));
   });
 });

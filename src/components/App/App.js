@@ -33,7 +33,6 @@ class App extends Component {
           <Route
             path="/login"
             render={({ match }) => {
-              console.log(match);
               return <Login />;
             }}
           />

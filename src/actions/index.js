@@ -15,10 +15,32 @@ export const loginUser = user => {
 export const logoutUser = () => {
   return {
     type: 'LOGOUT_USER'
-  }
-}
+  };
+};
 
-export const hasErrored =(message) => ({
+export const hasErrored = message => ({
   type: 'HAS_ERRORED',
   message
-})
+});
+
+export const addFavorite = movie => {
+  return {
+    type: 'ADD_FAVORITE',
+    movie
+  };
+};
+
+export const removeFavorite = (userId, movieId) => {
+  return {
+    type: 'REMOVE_FAVORITE',
+    userId,
+    movieId
+  };
+};
+
+export const retrieveAllFavorites = userId => {
+  return {
+    type: 'RETRIEVE_ALL_FAVORITES',
+    userId
+  };
+};

@@ -4,11 +4,11 @@ export const moviesReducer = (state = [], action) => {
       const cleanMovies = action.movies.map(movie => {
         return {
           title: movie.title,
-          releaseDate: movie.release_date,
+          release_date: movie.release_date,
           overview: movie.overview,
-          id: movie.id,
-          poster: 'https://image.tmdb.org/t/p/w500///'+ movie.poster_path,
-          isFavorite: false
+          movie_id: movie.id,
+          poster_path: 'https://image.tmdb.org/t/p/w500///' + movie.poster_path,
+          vote_average: movie.vote_average
         };
       });
       return cleanMovies;
