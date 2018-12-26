@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class Card extends Component {
   constructor() {
@@ -43,3 +44,9 @@ export class Card extends Component {
     );
   }
 }
+
+Card.propTypes = {
+  addFavorite: PropTypes.func.isRequired,
+  movie: PropTypes.object.isRequired,
+  user: PropTypes.object
+};

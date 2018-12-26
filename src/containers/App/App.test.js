@@ -11,16 +11,18 @@ describe('App', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should dispatch fetchMovies with a url on componentDidMount', () => {
-    const mockDispatch = jest.fn();
-    const mockUrl = 'https:www.moviedb.com';
+  describe('mapDispatchToProps', () => {
+    it('should dispatch fetchMovies with a url on componentDidMount', () => {
+      const mockDispatch = jest.fn();
+      const mockUrl = 'https:www.moviedb.com';
 
-    const actionToDispatch = fetchMovies(mockUrl);
+      const actionToDispatch = fetchMovies(mockUrl);
 
-    const mappedProps = mapDispatchToProps(mockDispatch);
+      const mappedProps = mapDispatchToProps(mockDispatch);
 
-    mappedProps.fetchMovies(mockUrl);
+      mappedProps.fetchMovies(mockUrl);
 
-    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
   });
 });
