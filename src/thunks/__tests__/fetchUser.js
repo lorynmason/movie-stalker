@@ -1,0 +1,1 @@
+import { fetchUser } from '../fetchUser';
