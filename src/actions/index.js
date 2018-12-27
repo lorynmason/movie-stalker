@@ -23,10 +23,10 @@ export const hasErrored = message => ({
   message
 });
 
-export const addFavorite = movie => {
+export const addFavorite = message => {
   return {
     type: 'ADD_FAVORITE',
-    movie
+    message
   };
 };
 
