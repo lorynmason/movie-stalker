@@ -21,7 +21,7 @@
 .stalker {
   position: absolute;
   left: 450px;
-  animation: stalker-rush-in 2s ease;
+  animation: stalker-rush-in 1.5s ease;
 }
 
 @keyframes movie-rush-in {
@@ -36,7 +36,11 @@
   }
   
   80% {
-    transform: skew(-30deg)
+    transform: skew(-30deg);
+  }
+
+  90% {
+    transform: skew(10deg);
   }
   
   100% {
@@ -56,8 +60,12 @@
     opacity: 0;
   }
   
-  80% {
-    transform: skew(-30deg)
+  90% {
+    transform: skew(-30deg);
+  }
+
+  95% {
+    transform: skew(10deg);
   }
   
   100% {
