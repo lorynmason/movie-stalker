@@ -45,13 +45,17 @@ export class App extends Component {
   }
 }
 
-export const mapDispatchToProps = dispatch => ({
+export const mapStateToProps = state => ({
+  user: state.user
+})
+
+const mapDispatchToProps = dispatch => ({
   fetchMovies: url => dispatch(fetchMovies(url))
 });
 
 export default withRouter(
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(App)
 );
