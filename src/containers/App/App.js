@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { key } from '../../apikey';
 import CardContainer from '../../containers/CardContainer/CardContainer';
-import Menu from '../../components/Menu/Menu';
+import Menu from '../../containers/Menu/Menu';
 import Login from '../../containers/Login/Login';
 import { Switch, Route, Redirect, withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
