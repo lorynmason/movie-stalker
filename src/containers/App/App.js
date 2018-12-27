@@ -5,7 +5,6 @@ import { key } from '../../apikey';
 import CardContainer from '../../containers/CardContainer/CardContainer';
 import Menu from '../../components/Menu/Menu';
 import Login from '../../containers/Login/Login';
-import Favorites from '../../containers/Favorites/Favorites';
 import { Switch, Route, Redirect, withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import '../../styles/main.scss';

@@ -21,7 +21,7 @@ export const postFavorites = (movie, userId) => {
       }
       const result = await response.json();
       console.log(result)
-      dispatch(addFavorite(result.message));
+      // dispatch(addFavorite(result.message));
     } catch (err) {
       dispatch(hasErrored(err.message));
     }
