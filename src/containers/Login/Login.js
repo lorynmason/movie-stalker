@@ -23,7 +23,7 @@ export class Login extends Component {
     });
   }
   
-  handleSubmit = async e => {
+  handleSubmit = e => {
     e.preventDefault();
     const { email, password, newUser, name } = this.state;
     if (newUser) {
@@ -65,31 +65,32 @@ export class Login extends Component {
     if(this.props.user) {
       page = <Redirect to='/' />
     }
-
     return (
       <div className="form-container">
         <form onSubmit={this.handleSubmit}>
           <h1>LOGIN</h1>
           {nameInput}
-          <input
-            type="email"
-            placeholder="E-mail"
-            value={email}
-            onChange={this.handleInputChange}
-            name="email"
-          />
-          <input
-            type="password"
-            placeholder="password"
-            value={password}
-            onChange={this.handleInputChange}
-            name="password"
-          />
-          <button>{buttonText}</button>
-        </form>
-        {createNewUser}
-        <p>{this.state.errorMessage}</p>
-        {page}
+          <input 
+             id="email-input"
+             type="email"
+             placeholder="E-mail"
+             value={email}
+             onChange={this.handleInputChange}
+             name="email"
+           />
+           <input
+             id="password-input"
+             type="password"
+             placeholder="password"
+             value={password}
+             onChange={this.handleInputChange}
+             name="password"
+           />
+           <button>{buttonText}</button>
+         </form>
+         {createNewUser}
+         <p>{this.state.errorMessage}</p>
+         {page}
       </div>
     );
   }
