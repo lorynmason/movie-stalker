@@ -1,3 +1,5 @@
+import { Favorites } from "../components/Favorites/Favorites";
+
 export const addMovies = movieArray => {
   return {
     type: 'ADD_MOVIES',
@@ -38,9 +40,9 @@ export const removeFavorite = (userId, movieId) => {
   };
 };
 
-export const retrieveAllFavorites = userId => {
+export const retrieveAllFavorites = favorites => {
   return {
     type: 'RETRIEVE_ALL_FAVORITES',
-    userId
+    favorites
   };
 };
