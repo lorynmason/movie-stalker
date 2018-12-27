@@ -8,7 +8,6 @@ export const fetchFavorites = (userId) => {
         throw Error(response.statusText)
       }
       const result = await response.json()
-      console.log(result)
       dispatch(retrieveAllFavorites(result.data))
     } catch(err) {
       dispatch(hasErrored(err.message))

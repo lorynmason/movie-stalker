@@ -1,5 +1,3 @@
-import { Favorites } from "../components/Favorites/Favorites";
-
 export const addMovies = movieArray => {
   return {
     type: 'ADD_MOVIES',

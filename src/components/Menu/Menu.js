@@ -47,12 +47,8 @@ export class Menu extends Component {
           <button onClick={this.toggleMenu}>X</button>
           {log}
           <p>
-            <Link
-              className="menu-item"
-              to="/favorites"
-              onClick={this.toggleMenu}
-            >
-              Stalked:0
+            <Link className='menu-item' to="/favorites" onClick={this.toggleMenu}>
+              Stalked: <span>{this.props.allFavorites.length}</span>
             </Link>
           </p>
         </div>
@@ -61,9 +57,10 @@ export class Menu extends Component {
   }
 }
 
-export const mapStateToProps = state => ({
-  user: state.user
-});
+export const mapStateToProps = (state) => ({
+  user: state.user,
+  allFavorites: state.favorites
+})
 
 export const mapDispatchToProps = dispatch => ({
   logoutUser: () => dispatch(logoutUser())
