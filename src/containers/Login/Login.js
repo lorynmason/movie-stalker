@@ -45,7 +45,9 @@ export class Login extends Component {
     let nameInput;
     let buttonText;
     let page;
-    let createNewUser = <p className="create-account"onClick={this.handleNewUser}>Click here to create an account</p>
+    let createNewUser = <p className="create-account" onClick={this.handleNewUser}>
+    Click here to create an account
+    </p>
     if (newUser) {
       buttonText = 'Create New Account'
       nameInput = (

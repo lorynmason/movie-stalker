@@ -38,9 +38,9 @@ export const removeFavorite = (userId, movieId) => {
   };
 };
 
-export const retrieveAllFavorites = userId => {
+export const retrieveAllFavorites = favorites => {
   return {
     type: 'RETRIEVE_ALL_FAVORITES',
-    userId
+    favorites
   };
 };

@@ -11,7 +11,7 @@ export const postFavorites = (movie, userId) => {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            movie,
+            ...movie,
             user_id: userId
           })
         }
@@ -20,7 +20,8 @@ export const postFavorites = (movie, userId) => {
         throw Error(response.statusText);
       }
       const result = await response.json();
-      dispatch(addFavorite(result.data));
+      console.log(result)
+      dispatch(addFavorite(result.id));
     } catch (err) {
       dispatch(hasErrored(err.message));
     }

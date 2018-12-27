@@ -12,10 +12,22 @@ describe('Login container', () => {
 describe('handleInputChange', () => {
   it('should update state on change', () => {
     let wrapper = shallow(<Login />)
-    wrapper.find('#email-input').simulate('change', { target: { value: 'john@gmail.com',
-    name: 'email' } })  
-    wrapper.find('#password-input').simulate('change', { target: { value: 'Hello',
-  name: 'password' } })   
+    wrapper.find('#email-input').simulate('change', 
+    { 
+      target: 
+      { 
+        value: 'john@gmail.com',
+        name: 'email' 
+      } 
+    })  
+    wrapper.find('#password-input').simulate('change', 
+    { 
+      target: 
+      { 
+        value: 'Hello',
+        name: 'password' 
+      } 
+    })   
     const expected = {
       name: '',
       email: 'john@gmail.com',
@@ -58,7 +70,13 @@ describe('handleSubmit', () => {
 describe('handleNewUser', () => {
   it('should set state of newUser to true', () => {
     let wrapper = shallow(<Login />)
-    const expected = {"email": "", "errorMessage": "", "name": "", "newUser": true, "password": ""}
+    const expected = {
+      "email": "", 
+      "errorMessage": "", 
+      "name": "",
+      "newUser": true, 
+      "password": ""
+    }
     wrapper.find('.create-account').simulate('click', {
       preventDefault: () => {
       }})
