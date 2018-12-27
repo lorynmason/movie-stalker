@@ -8,17 +8,19 @@ export class Card extends Component {
       isFavorite: false
     };
   }
-
   handleClick = () => {
     if (!this.state.isFavorite) {
       this.props.addFavorite(this.props.movie, this.props.user.id);
     }
-    this.setState({
-      isFavorite: !this.state.isFavorite
-    });
+    this.state.isFavorite = !this.state.isFavorite
   };
 
   render() {
+    console.log(this.props.isFavorite)
+    let heart = "far fa-heart"
+    if(this.props.isFavorite) {
+      heart = "fas fa-heart-broken"
+    }
     const {
       title,
       release_date,
@@ -33,7 +35,7 @@ export class Card extends Component {
         style={{ backgroundImage: `URL(${poster_path})` }}
       >
         <button onClick={this.handleClick}>
-          <i className="far fa-heart" />
+          <i className={heart} />
         </button>
         <div>
           <h1>{title}</h1>
