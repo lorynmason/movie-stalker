@@ -4,8 +4,12 @@ import PropTypes from 'prop-types';
 import { Card } from '../../components/Card/Card';
 import { postFavorites } from '../../thunks/postFavorites';
 
-export const CardContainer = ({ movies, addFavorite, user, favorites }) => {
-  const cards = movies.map(movie => {
+export const CardContainer = ({ movies, addFavorite, user, favorites, match }) => {
+  let array = movies;
+  if (match.path === '/favorites') {
+    array = favorites;
+  }
+  const cards = array.map(movie => {
     let isFavorite = false
     favorites.forEach(fav => {
       if(fav.movie_id === movie.movie_id) {

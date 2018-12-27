@@ -45,7 +45,7 @@ export class App extends Component {
               return <Login />;
             }}
           />
-          <Route path="/favorites" component={Favorites} />
+          <Route path="/favorites" component={CardContainer} />
           <Redirect to="/" />
         </Switch>
       </div>
