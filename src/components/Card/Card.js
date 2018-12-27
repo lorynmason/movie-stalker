@@ -2,25 +2,37 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export class Card extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
-      isFavorite: false
-    };
-  }
-  handleClick = () => {
-    if (!this.state.isFavorite) {
-      this.props.addFavorite(this.props.movie, this.props.user.id);
+      isFavorite: props.isFavorite
     }
-    this.state.isFavorite = !this.state.isFavorite
+  }
+
+  handleClick = () => {
+    const { movie, user, isFavorite } = this.props
+    if (!user) {
+      // add message "you must login to favorite"
+      return;
+    }
+
+    if (isFavorite) {
+      this.props.removeFavorite(user.id, movie.movie_id)
+    } else {
+      this.props.addFavorite(movie, user.id);
+    }
+
+    this.setState({
+      isFavorite: !this.state.isFavorite
+    })
   };
 
   render() {
-    console.log(this.props.isFavorite)
     let heart = "far fa-heart"
-    if(this.props.isFavorite) {
+    if(this.props.isFavorite || this.state.isFavorite) {
       heart = "fas fa-heart-broken"
     }
+
     const {
       title,
       release_date,
@@ -28,6 +40,7 @@ export class Card extends Component {
       movie_id,
       poster_path
     } = this.props.movie;
+
     return (
       <div
         className="card"
