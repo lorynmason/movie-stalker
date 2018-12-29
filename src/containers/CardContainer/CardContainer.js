@@ -6,10 +6,6 @@ import { postFavorites } from '../../thunks/postFavorites';
 import { deleteFavorite } from '../../thunks/deleteFavorite';
 
 export const CardContainer = ({ movies, addFavorite, removeFavorite, user, favorites, match }) => {
-  const update = () => {
-    console.log('hi')
-    return null;    
-  }
   let array = movies;
   if (match.path === '/favorites') {
     array = favorites;
@@ -26,8 +22,7 @@ export const CardContainer = ({ movies, addFavorite, removeFavorite, user, favor
                   addFavorite={addFavorite} 
                   removeFavorite={removeFavorite}
                   user={user} 
-                  isFavorite={isFavorite}
-                  update={update}/>)
+                  isFavorite={isFavorite}/>)
   }
   );
   return <div className="cardContainer">{cards}</div>;
@@ -52,3 +47,4 @@ export default connect(
 CardContainer.propTypes = {
   addFavorite: PropTypes.func.isRequired
 };
+
