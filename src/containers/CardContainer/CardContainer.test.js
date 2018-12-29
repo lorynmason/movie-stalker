@@ -2,7 +2,7 @@ import { CardContainer, mapStateToProps } from './CardContainer';
 import { shallow } from 'enzyme';
 import React from 'react';
 
-describe('CardContainer', () => {
+describe.skip('CardContainer', () => {
   const wrapper = shallow(<CardContainer movies={[]} addFavorite={jest.fn} />);
   describe('CardContainer Component', () => {
     expect(wrapper).toMatchSnapshot();
