@@ -10,21 +10,30 @@ describe('fetchMovies', () => {
     mockDispatch = jest.fn();
   });
 
-  it('should dispatch hasError with error message if promise rejects', async () => {
+  it('should dispatch hasErrored with a message if promise rejects', async () => {
     window.fetch = jest.fn().mockImplementation(() =>
       Promise.reject({
-        message: 'an error has occured'
+        message: 'an error has occurred'
       })
     );
 
     const thunk = fetchMovies(mockUrl);
     await thunk(mockDispatch);
-    expect(mockDispatch).toHaveBeenCalledWith(hasErrored('an error has occured')
-);
-    // const result = await thunk(mockDispatch);
-    // console.log(result);
-    // expect(result).toEqual('an error has occured');
+    expect(mockDispatch).toHaveBeenCalledWith(hasErrored('an error has occurred'));
   });
+
+  it('should throw an error if the response is not ok', async () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: false,
+        statusText: 'an error has occurred'
+      })
+    })
+
+    const thunk = fetchMovies(mockUrl);
+    await thunk(mockDispatch);
+    expect(mockDispatch).toHaveBeenCalledWith(hasErrored('an error has occurred'));
+  })
 
   it('Dispatches the addMovies(moviesArray) action if response is ok', async () => {
     const mockMovies = [{ name: 'Halloween' }, { name: 'It' }];
