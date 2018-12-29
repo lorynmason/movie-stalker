@@ -21,14 +21,10 @@ export const Message = (props) => {
       </div>
     )
   }
-<<<<<<< Updated upstream
-  return null
-=======
   return (
     <div className="blah">
     </div>
   )
->>>>>>> Stashed changes
 }
 
 export const mapStateToProps = (state) => ({
