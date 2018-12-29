@@ -1,17 +1,17 @@
 import { hasErrored, loginUser } from "../actions";
 
 export const fetchUser = (email, password) => {
-  return async(dispatch) => {
+  return async (dispatch) => {
     try {
       const response = await fetch('http://localhost:3000/api/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email,
-        password
-      })
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email,
+          password
+        })
       });
       if(!response.ok) {
         throw Error(response.statusText)

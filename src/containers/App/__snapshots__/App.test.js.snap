@@ -57,6 +57,7 @@ ShallowWrapper {
           />
           <Route
             component={[Function]}
+            exact={true}
             path="/favorites"
           />
           <Redirect
@@ -187,6 +188,7 @@ ShallowWrapper {
             />,
             <Route
               component={[Function]}
+              exact={true}
               path="/favorites"
             />,
             <Redirect
@@ -228,6 +230,7 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "component": [Function],
+              "exact": true,
               "path": "/favorites",
             },
             "ref": null,
@@ -296,6 +299,7 @@ ShallowWrapper {
             />
             <Route
               component={[Function]}
+              exact={true}
               path="/favorites"
             />
             <Redirect
@@ -426,6 +430,7 @@ ShallowWrapper {
               />,
               <Route
                 component={[Function]}
+                exact={true}
                 path="/favorites"
               />,
               <Redirect
@@ -467,6 +472,7 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "component": [Function],
+                "exact": true,
                 "path": "/favorites",
               },
               "ref": null,

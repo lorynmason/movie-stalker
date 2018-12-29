@@ -10,6 +10,15 @@ describe('fetchMovies', () => {
     mockDispatch = jest.fn();
   });
 
+  it('should call fetch with the correct parameters', () => {
+    window.fetch = jest.fn();
+
+    const thunk = fetchMovies(mockUrl);
+    thunk(mockDispatch);
+
+    expect(window.fetch).toHaveBeenCalledWith(mockUrl);
+  });
+
   it('should dispatch hasErrored with a message if promise rejects', async () => {
     window.fetch = jest.fn().mockImplementation(() =>
       Promise.reject({
@@ -22,7 +31,7 @@ describe('fetchMovies', () => {
     expect(mockDispatch).toHaveBeenCalledWith(hasErrored('an error has occurred'));
   });
 
-  it('should throw an error if the response is not ok', async () => {
+  it('should dispatch hasErrored if the response is not ok', async () => {
     window.fetch = jest.fn().mockImplementation(() => {
       return Promise.resolve({
         ok: false,
