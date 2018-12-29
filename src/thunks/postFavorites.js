@@ -1,4 +1,4 @@
-import { hasErrored, addFavorite } from '../actions';
+import { hasErrored, addMessage } from '../actions';
 
 export const postFavorites = (movie, userId) => {
   return async dispatch => {
@@ -21,7 +21,7 @@ export const postFavorites = (movie, userId) => {
       }
       const result = await response.json();
       console.log(result)
-      // dispatch(addFavorite(result.message));
+      dispatch(addMessage(result.message));
     } catch (err) {
       dispatch(hasErrored(err.message));
     }
