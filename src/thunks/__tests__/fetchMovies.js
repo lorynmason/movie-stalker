@@ -10,40 +10,52 @@ describe('fetchMovies', () => {
     mockDispatch = jest.fn();
   });
 
-  it('should dispatch hasError with error message if response is not okay', async () => {
-    window.fetch = jest.fn().mockImplementation(() =>
-      Promise.resolve({
-        ok: false,
-        statusText: 'an error has occured'
-      })
-    );
+  it('should call fetch with the correct parameters', () => {
+    window.fetch = jest.fn();
 
     const thunk = fetchMovies(mockUrl);
-    await thunk(mockDispatch);
-    expect(mockDispatch).toHaveBeenCalledWith(
-      hasErrored('an error has occured')
-    );
-    const result = await thunk(mockDispatch);
-    console.log(result);
-    expect(result).toEqual('an error has occured');
+    thunk(mockDispatch);
+
+    expect(window.fetch).toHaveBeenCalledWith(mockUrl);
   });
 
-  it.skip('Dispatches the addMovies(moviesArray) action if response is ok', async () => {
-    const mockMovies = [{ name: 'Halloween' }, { name: 'It' }];
-
+  it('should dispatch hasErrored with a message if promise rejects', async () => {
     window.fetch = jest.fn().mockImplementation(() =>
-      Promise.resolve({
-        ok: true,
-        json: () =>
-          Promise.resolve({
-            movies: [...mockMovies]
-          })
+      Promise.reject({
+        message: 'an error has occurred'
       })
     );
 
     const thunk = fetchMovies(mockUrl);
     await thunk(mockDispatch);
+    expect(mockDispatch).toHaveBeenCalledWith(hasErrored('an error has occurred'));
+  });
 
+  it('should dispatch hasErrored if the response is not ok', async () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: false,
+        statusText: 'an error has occurred'
+      })
+    })
+
+    const thunk = fetchMovies(mockUrl);
+    await thunk(mockDispatch);
+    expect(mockDispatch).toHaveBeenCalledWith(hasErrored('an error has occurred'));
+  })
+
+  it('Dispatches the addMovies(moviesArray) action if response is ok', async () => {
+    const mockMovies = [{ name: 'Halloween' }, { name: 'It' }];
+    
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({results: mockMovies})
+      })
+    );
+    
+    const thunk = fetchMovies(mockUrl);
+    await thunk(mockDispatch);
+    
     expect(mockDispatch).toHaveBeenCalledWith(addMovies(mockMovies));
   });
 });

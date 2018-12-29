@@ -20,7 +20,6 @@ export const postFavorites = (movie, userId) => {
         throw Error(response.statusText);
       }
       const result = await response.json();
-      console.log(result)
       dispatch(addMessage(result.message));
     } catch (err) {
       dispatch(hasErrored(err.message));

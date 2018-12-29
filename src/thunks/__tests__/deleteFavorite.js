@@ -1,17 +1,26 @@
-import { fetchFavorites } from '../fetchFavorites';
-import { retrieveAllFavorites, hasErrored } from '../../actions';
+import { deleteFavorite } from '../deleteFavorite';
+import { addMessage, hasErrored } from '../../actions';
 
 describe('postFavorites', () => {
   const mockDispatch = jest.fn();
+  const mockMovie = {
+    title: 'Jaws'
+  }
 
   it('should call fetch with the correct parameters', () => {
     window.fetch = jest.fn();
-    const expected = `http://localhost:3000/api/users/2/favorites`;
+    const expectedUrl = 'http://localhost:3000/api/users/2/favorites/3'
+    const expectedBody = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
 
-    const thunk = fetchFavorites(2);
+    const thunk = deleteFavorite(2, 3);
     thunk(mockDispatch);
 
-    expect(window.fetch).toHaveBeenCalledWith(expected);
+    expect(window.fetch).toHaveBeenCalledWith(expectedUrl, expectedBody);
   })
   
   it('should dispatch hasErrored with a message if promise rejects', async () => {
@@ -21,9 +30,8 @@ describe('postFavorites', () => {
       })
     );
 
-    const thunk = fetchFavorites(2);
+    const thunk = deleteFavorite(2, 3);
     await thunk(mockDispatch);
-
     expect(mockDispatch).toHaveBeenCalledWith(hasErrored('an error has occurred'));
   });
 
@@ -35,23 +43,23 @@ describe('postFavorites', () => {
       })
     })
 
-    const thunk = fetchFavorites(2);
+    const thunk = deleteFavorite(2, 3);
     await thunk(mockDispatch);
     expect(mockDispatch).toHaveBeenCalledWith(hasErrored('an error has occurred'));
   })
 
-  it('Dispatches aan array of movies with retrieveAllFavorites if response is ok', async () => {
-    const mockMovies = [{title: 'Jaws'}, {title: 'Carrie'}]
+  it('Dispatches a success message with addMessage if response is ok', async () => {
+    const mockMessage = 'Movie was deleted from favorites';
     
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         ok: true,
-        json: () => Promise.resolve({data: [{title: 'Jaws'}, {title: 'Carrie'}]})
+        json: () => {}
       })
     );
     
-    const thunk = fetchFavorites(2);
+    const thunk = deleteFavorite(2, 3);
     await thunk(mockDispatch);
     
-    expect(mockDispatch).toHaveBeenCalledWith(retrieveAllFavorites(mockMovies));
+    expect(mockDispatch).toHaveBeenCalledWith(addMessage(mockMessage));
   });
 });
