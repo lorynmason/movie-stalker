@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import '../../styles/main.scss';
 import { fetchMovies } from '../../thunks/fetchMovies';
 import { fetchFavorites } from '../../thunks/fetchFavorites';
-import Message from '../Message/Message'
+import Message from '../Message/Message';
 
 export class App extends Component {
   async componentDidMount() {
@@ -19,9 +19,9 @@ export class App extends Component {
   }
 
   componentDidUpdate() {
-    if(this.props.user) {
-      const userId = this.props.user.id
-      this.props.addFavoritesToStore(userId)
+    if (this.props.user) {
+      const userId = this.props.user.id;
+      this.props.addFavoritesToStore(userId);
     }
   }
 
@@ -56,11 +56,11 @@ export class App extends Component {
 
 export const mapStateToProps = state => ({
   user: state.user
-})
+});
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   fetchMovies: url => dispatch(fetchMovies(url)),
-  addFavoritesToStore: (userId) => dispatch(fetchFavorites(userId))
+  addFavoritesToStore: userId => dispatch(fetchFavorites(userId))
 });
 
 export default withRouter(
@@ -71,5 +71,6 @@ export default withRouter(
 );
 
 App.propTypes = {
-  fetchMovies: PropTypes.func.isRequired
+  fetchMovies: PropTypes.func.isRequired,
+  addFavoritesToStore: PropTypes.func.isRequired
 };

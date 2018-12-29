@@ -4,7 +4,22 @@ exports[`App matches snapshot with all data correctly rendered 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <App
-    fetchMovies={[Function]}
+    addFavoritesToStore={[MockFunction]}
+    fetchMovies={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            "https://api.themoviedb.org/3/discover/movie?api_key=48b46b7dc12d2653fb4dcf8ae2aa6df1&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=1&with_genres=27&without_genres=10751",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      }
+    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

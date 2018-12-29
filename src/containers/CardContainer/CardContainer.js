@@ -69,5 +69,11 @@ export default connect(
 )(CardContainer);
 
 CardContainer.propTypes = {
-  addFavorite: PropTypes.func.isRequired
+  addFavorite: PropTypes.func.isRequired,
+  favorites: PropTypes.array.isRequired,
+  sendMessage: PropTypes.func,
+  removeFavorite: PropTypes.func.isRequired,
+  movies: PropTypes.array.isRequired,
+  user: PropTypes.object,
+  match: PropTypes.object.isRequired
 };
