@@ -1,12 +1,23 @@
 .cardContainer {
   width: 100%;
   max-width: 1500px;
-  padding: 50px 5px 80px;
+  padding: 20px 5px 80px;
   display: grid;
   grid-template-columns: repeat(auto-fit, 380px);
   grid-gap: 80px 0;
   justify-content: space-around;
   margin: 0 auto;
+}
+
+.stalked-message {
+  border: 2px solid $mainColor;
+  background: rgba(0, 0, 0, 0.692);
+  color: white;
+  font-family: 'Special Elite', cursive;
+  font-size: 1.3em;
+  padding: 5px;
+  width: 500px;
+  margin: 10px auto;
 }
 
 html {

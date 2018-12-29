@@ -20,9 +20,11 @@ export const postFavorites = (movie, userId) => {
         throw Error(response.statusText);
       }
       const result = await response.json();
-      dispatch(addMessage(result.message));
+      console.log(result)
+      dispatch(addMessage('Movie is now being Stalked'));
     } catch (err) {
       dispatch(hasErrored(err.message));
+      dispatch(addMessage('Internal Server Error, Failed to Stalk Movie'))
     }
   };
 };

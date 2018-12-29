@@ -33,8 +33,8 @@ export const Card = ({ movie, user, isFavorite, addFavorite, removeFavorite }) =
       key={movie_id}
       style={{ backgroundImage: `URL(${poster_path})` }}
     >
-      <button onClick={handleClick}>
-        <i className={heart} />
+      <button>
+        <i className={heart} onClick={handleClick} />
       </button>
       <div>
         <h1>{title}</h1>

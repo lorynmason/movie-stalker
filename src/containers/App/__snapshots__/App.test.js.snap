@@ -45,6 +45,7 @@ ShallowWrapper {
           </span>
         </h1>,
         <Connect(Menu) />,
+        <Connect(Message) />,
         <Switch>
           <Route
             component={[Function]}
@@ -175,6 +176,15 @@ ShallowWrapper {
         "instance": null,
         "key": undefined,
         "nodeType": "class",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
         "props": Object {
           "children": Array [
             <Route
@@ -287,6 +297,7 @@ ShallowWrapper {
             </span>
           </h1>,
           <Connect(Menu) />,
+          <Connect(Message) />,
           <Switch>
             <Route
               component={[Function]}
@@ -403,6 +414,15 @@ ShallowWrapper {
             },
           ],
           "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
         },
         Object {
           "instance": null,

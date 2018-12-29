@@ -8,6 +8,13 @@ import { deleteFavorite } from '../../thunks/deleteFavorite';
 export const CardContainer = ({ movies, addFavorite, removeFavorite, user, favorites, match }) => {
   let array = movies;
   if (match.path === '/favorites') {
+    if(favorites.length === 0 && user) {
+      return <p className='stalked-message'>You have not stalked any movies</p>
+    }
+    if(!user) {
+      return <p className='stalked-message'>Login to see stalked movies</p>
+
+    }
     array = favorites;
   }
   const cards = array.map(movie => {

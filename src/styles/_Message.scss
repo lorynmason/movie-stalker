@@ -1,13 +1,18 @@
 .message-container {
-  border: 2px solid rgb(0, 0, 0);
-  background: rgba(0, 0, 0, 0.527);
+  border: 2px solid $mainColor;
+  background: rgba(0, 0, 0, 0.692);
   color: white;
   font-family: 'Special Elite', cursive;
   font-size: 1.3em;
   padding: 5px;
   width: 500px;
-  position: absolute;
+  position: sticky;
   z-index: 10;
   text-align: center;
-  margin-left: 30vw;
+  margin: auto;
+  top: 100px;
+}
+
+.blah {
+  height: 34px;
 }

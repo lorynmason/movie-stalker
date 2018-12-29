@@ -25,7 +25,11 @@ export const Message = (props) => {
       </div>
     )
   }
-  return null
+  return (
+    <div className="blah">
+
+    </div>
+  )
 }
 
 export const mapStateToProps = (state) => ({
