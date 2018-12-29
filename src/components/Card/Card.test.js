@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { Card } from './Card';
 
 describe('Card', () => {
@@ -16,28 +16,46 @@ describe('Card', () => {
   const mockUser = {
     id: 1
   };
-  const wrapper = shallow(
+  const mockFunc = jest.fn();
+  let wrapper = shallow(
     <Card
       movie={mockMovie}
-      key={mockMovie.title}
-      addFavorite={jest.fn}
       user={mockUser}
+      addFavorite={mockFunc}
+      onClick={mockFunc}
+      isFavorite={false}
+      sendMessage={mockFunc}
+      removeFavorite={mockFunc}
     />
   );
   it('should render snapshot with correct data', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should call addFavorite on click', () => {
-    //Test nested function call to addFavorite??
+  it('should simulate card being clicked on ', () => {
+    wrapper.find('i').simulate('click');
+    expect(mockFunc.mock.calls.length).toEqual(1);
   });
 
-  it('should change state if isFavorite to true on handleClick', () => {
-    const expected = {
-      isFavorite: true
-    };
+  it('should initially render favorite button as an empty heart', () => {
+    const result = wrapper.find('i').hasClass('far fa-heart');
+    expect(result).toEqual(true);
+  });
 
-    wrapper.instance().handleClick();
-    expect(wrapper.state()).toEqual(expected);
+  it('should render favorite button as a broken heart on click', () => {
+    wrapper = shallow(
+      <Card
+        movie={mockMovie}
+        user={mockUser}
+        addFavorite={mockFunc}
+        isFavorite={true}
+        sendMessage={mockFunc}
+        removeFavorite={mockFunc}
+      />
+    );
+
+    wrapper.find('i').simulate('click');
+    const result = wrapper.find('i').hasClass('fas fa-heart-broken');
+    expect(result).toEqual(true);
   });
 });

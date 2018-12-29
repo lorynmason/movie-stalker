@@ -1,31 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const Card = ({ movie, user, isFavorite, addFavorite, sendMessage, removeFavorite }) => {
+export const Card = ({
+  movie,
+  user,
+  isFavorite,
+  addFavorite,
+  sendMessage,
+  removeFavorite
+}) => {
   const handleClick = () => {
     if (!user) {
-      sendMessage('You must Login to Stalk Movies')
+      sendMessage('You must Login to Stalk Movies');
       return;
     }
     if (isFavorite) {
-      removeFavorite(user.id, movie.movie_id)
+      removeFavorite(user.id, movie.movie_id);
     } else {
       addFavorite(movie, user.id);
     }
   };
 
-  let heart = "far fa-heart"
-  if(isFavorite) {
-    heart = "fas fa-heart-broken"
+  let heart = 'far fa-heart';
+  if (isFavorite) {
+    heart = 'fas fa-heart-broken';
   }
 
-  const {
-    title,
-    release_date,
-    overview,
-    movie_id,
-    poster_path
-  } = movie;
+  const { title, release_date, overview, movie_id, poster_path } = movie;
 
   return (
     <div
@@ -43,10 +44,13 @@ export const Card = ({ movie, user, isFavorite, addFavorite, sendMessage, remove
       </div>
     </div>
   );
-}
+};
 
 Card.propTypes = {
   addFavorite: PropTypes.func.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
+  sendMessage: PropTypes.func.isRequired,
+  removeFavorite: PropTypes.func.isRequired,
   movie: PropTypes.object.isRequired,
   user: PropTypes.object
 };

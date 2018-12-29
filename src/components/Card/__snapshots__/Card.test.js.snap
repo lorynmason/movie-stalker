@@ -4,7 +4,8 @@ exports[`Card should render snapshot with correct data 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Card
-    addFavorite={[Function]}
+    addFavorite={[MockFunction]}
+    isFavorite={false}
     movie={
       Object {
         "movie_id": 381288,
@@ -15,6 +16,9 @@ ShallowWrapper {
         "vote_average": 7.2,
       }
     }
+    onClick={[MockFunction]}
+    removeFavorite={[MockFunction]}
+    sendMessage={[MockFunction]}
     user={
       Object {
         "id": 1,
