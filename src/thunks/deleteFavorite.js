@@ -1,14 +1,17 @@
 import { hasErrored, addMessage } from '../actions';
 
 export const deleteFavorite = (userId, movieId) => {
-  return async (dispatch) => {
+  return async dispatch => {
     try {
-      const response = await fetch(`http://localhost:3000/api/users/${userId}/favorites/${movieId}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json'
+      const response = await fetch(
+        `http://localhost:3000/api/users/${userId}/favorites/${movieId}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+          }
         }
-      });
+      );
       if (!response.ok) {
         throw Error(response.statusText);
       }
@@ -19,5 +22,5 @@ export const deleteFavorite = (userId, movieId) => {
       dispatch(hasErrored(err.message));
       dispatch(addMessage('Internal Server Error, Failed to Unstalk Movie'))
     }
-  }
-}
+  };
+};

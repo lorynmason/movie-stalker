@@ -5,12 +5,8 @@ import { fetchFavorites } from '../../thunks/fetchFavorites';
 
 export const Message = (props) => {
   setTimeout(() => {
-    update()
+    props.addMessage(null)
   }, 1500);
-
-  const update = () => {
-    props.addMess(null)
-  }
 
   if(props.user) {
     props.addFavoritesToStore(props.user.id)
@@ -38,7 +34,7 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  addMess: message => dispatch(addMessage(message)),
+  addMessage: message => dispatch(addMessage(message)),
   addFavoritesToStore: (userId) => dispatch(fetchFavorites(userId))
 })
 
