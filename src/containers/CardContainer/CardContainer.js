@@ -47,3 +47,4 @@ export default connect(
 CardContainer.propTypes = {
   addFavorite: PropTypes.func.isRequired
 };
+

@@ -1,11 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addMessage } from '../../actions'
+import { addMessage } from '../../actions';
+import { fetchFavorites } from '../../thunks/fetchFavorites';
 
 export const Message = (props) => {
   setTimeout(() => {
+    update()
+  }, 1500);
+
+  const update = () => {
     props.addMess(null)
-  }, 1000);
+  }
+
+  if(props.user) {
+    props.addFavoritesToStore(props.user.id)
+  }
 
   if(props.message) {
     return (
@@ -20,11 +29,13 @@ export const Message = (props) => {
 }
 
 export const mapStateToProps = (state) => ({
-  message: state.message
+  message: state.message,
+  user: state.user
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  addMess: message => dispatch(addMessage(message))
+  addMess: message => dispatch(addMessage(message)),
+  addFavoritesToStore: (userId) => dispatch(fetchFavorites(userId))
 })
 
 export default connect(
