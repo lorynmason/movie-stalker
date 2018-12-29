@@ -4,6 +4,7 @@ exports[`Menu should match snapshot with correct data 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Menu
+    allFavorites={Array []}
     logoutUser={[MockFunction]}
   />,
   Symbol(enzyme.__renderer__): Object {

@@ -23,21 +23,6 @@ export const hasErrored = message => ({
   message
 });
 
-export const addFavorite = message => {
-  return {
-    type: 'ADD_FAVORITE',
-    message
-  };
-};
-
-export const removeFavorite = (userId, movieId) => {
-  return {
-    type: 'REMOVE_FAVORITE',
-    userId,
-    movieId
-  };
-};
-
 export const retrieveAllFavorites = favorites => {
   return {
     type: 'RETRIEVE_ALL_FAVORITES',
@@ -45,9 +30,9 @@ export const retrieveAllFavorites = favorites => {
   };
 };
 
-export const addMessage = (message) => {
+export const addMessage = message => {
   return {
     type: 'ADD_MESSAGE',
     message
-  }
-}
+  };
+};
