@@ -4,39 +4,49 @@ import PropTypes from 'prop-types';
 import { Card } from '../../components/Card/Card';
 import { postFavorites } from '../../thunks/postFavorites';
 import { deleteFavorite } from '../../thunks/deleteFavorite';
-import { addMessage } from '../../actions'
+import { addMessage } from '../../actions';
 
-export const CardContainer = ({ movies, addFavorite, addMessage, removeFavorite, user, favorites, match }) => {
+export const CardContainer = ({
+  movies,
+  addFavorite,
+  addMessage,
+  removeFavorite,
+  user,
+  favorites,
+  match
+}) => {
   let array = movies;
   if (match.path === '/favorites') {
-    if(favorites.length === 0 && user) {
-      return <p className='stalked-message'>You have not Stalked any Movies</p>
+    if (favorites.length === 0 && user) {
+      return <p className="stalked-message">You have not Stalked any Movies</p>;
     }
-    if(!user) {
-      return <p className='stalked-message'>Login to see Stalked Movies</p>
-
+    if (!user) {
+      return <p className="stalked-message">Login to see Stalked Movies</p>;
     }
     array = favorites;
   }
-  const sendMessage = (message) => {
-    addMessage(message)
-  }
+  const sendMessage = message => {
+    addMessage(message);
+  };
   const cards = array.map(movie => {
     let isFavorite = false;
     favorites.forEach(fav => {
-      if(fav.movie_id === movie.movie_id) {
-        isFavorite = true
+      if (fav.movie_id === movie.movie_id) {
+        isFavorite = true;
       }
-    })
-    return (<Card movie={movie} 
-                  key={movie.title} 
-                  addFavorite={addFavorite} 
-                  removeFavorite={removeFavorite}
-                  user={user} 
-                  isFavorite={isFavorite}
-                  sendMessage={sendMessage}/>)
-  }
-  );
+    });
+    return (
+      <Card
+        movie={movie}
+        key={movie.title}
+        addFavorite={addFavorite}
+        removeFavorite={removeFavorite}
+        user={user}
+        isFavorite={isFavorite}
+        sendMessage={sendMessage}
+      />
+    );
+  });
   return <div className="cardContainer">{cards}</div>;
 };
 
@@ -48,8 +58,9 @@ export const mapStateToProps = state => ({
 
 export const mapDispatchToProps = dispatch => ({
   addFavorite: (movie, userId) => dispatch(postFavorites(movie, userId)),
-  removeFavorite: (userId, movieId) => dispatch(deleteFavorite(userId, movieId)),
-  addMessage: (message) => dispatch(addMessage(message))
+  removeFavorite: (userId, movieId) =>
+    dispatch(deleteFavorite(userId, movieId)),
+  addMessage: message => dispatch(addMessage(message))
 });
 
 export default connect(
@@ -60,4 +71,3 @@ export default connect(
 CardContainer.propTypes = {
   addFavorite: PropTypes.func.isRequired
 };
-
