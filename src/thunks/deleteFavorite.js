@@ -1,4 +1,4 @@
-import { hasErrored } from '../actions';
+import { hasErrored, addMessage } from '../actions';
 
 export const deleteFavorite = (userId, movieId) => {
   return async (dispatch) => {
@@ -13,6 +13,7 @@ export const deleteFavorite = (userId, movieId) => {
         throw Error(response.statusText);
       }
       console.log(response)
+      dispatch(addMessage(response))
     } catch(err) {
       dispatch(hasErrored(err.message));
     }

@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import '../../styles/main.scss';
 import { fetchMovies } from '../../thunks/fetchMovies';
 import { fetchFavorites } from '../../thunks/fetchFavorites';
+import Message from '../Message/Message'
 
 export class App extends Component {
   async componentDidMount() {
@@ -36,6 +37,7 @@ export class App extends Component {
           </span>
         </h1>
         <Menu />
+        <Message />
         <Switch>
           <Route exact path="/" component={CardContainer} />
           <Route

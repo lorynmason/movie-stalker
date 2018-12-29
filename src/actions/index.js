@@ -44,3 +44,10 @@ export const retrieveAllFavorites = favorites => {
     favorites
   };
 };
+
+export const addMessage = (message) => {
+  return {
+    type: 'ADD_MESSAGE',
+    message
+  }
+}
