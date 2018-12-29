@@ -12,8 +12,9 @@ export const deleteFavorite = (userId, movieId) => {
       if (!response.ok) {
         throw Error(response.statusText);
       }
-      console.log(response)
-      dispatch(addMessage(response))
+      const result = await response.json();
+      console.log(result)
+      dispatch(addMessage('Movie was deleted from favorites'))
     } catch(err) {
       dispatch(hasErrored(err.message));
     }

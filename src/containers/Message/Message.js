@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-export const Message = (props) => {
-  if(props.message) {
-    return (
-      <div className="message-container">
-        <p>
-          {props.message}
-        </p>
-      </div>
-    )
+export class Message extends Component {
+  render() {
+    if(this.props.message) {
+      return (
+        <div className="message-container">
+          <p>
+            {this.props.message}
+          </p>
+        </div>
+      )
+    }
+    return null
   }
-  return null
 }
 
 
