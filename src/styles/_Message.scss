@@ -6,5 +6,8 @@
   font-size: 1.3em;
   padding: 5px;
   width: 500px;
-  margin: 0 auto;
+  position: absolute;
+  z-index: 10;
+  text-align: center;
+  margin-right: -50px;
 }
