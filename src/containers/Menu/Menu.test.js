@@ -7,7 +7,7 @@ import { logoutUser } from '../../actions';
 describe('Menu', () => {
   const mockUser = { id: 1 };
   const mockFunc = jest.fn();
-  const wrapper = shallow(<Menu logoutUser={mockFunc} />);
+  const wrapper = shallow(<Menu logoutUser={mockFunc} allFavorites={[]} />);
   it('should match snapshot with correct data', () => {
     expect(wrapper).toMatchSnapshot();
   });
