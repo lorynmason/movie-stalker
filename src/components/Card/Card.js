@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const Card = ({ movie, user, isFavorite, addFavorite, removeFavorite }) => {
+export const Card = ({ movie, user, isFavorite, addFavorite, sendMessage, removeFavorite }) => {
   const handleClick = () => {
     if (!user) {
-      // add message "you must login to favorite"
+      sendMessage('You must Login to Stalk Movies')
       return;
     }
     if (isFavorite) {
