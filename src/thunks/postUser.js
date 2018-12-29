@@ -19,7 +19,7 @@ export const postUser = (email, password, name) => {
       }
       const result = await response.json()
       dispatch(loginUser({name, id: result.id}))
-      dispatch(addMessage('Sucess! You are now a Stalker'))
+      dispatch(addMessage('Success! You are now a Stalker'))
     } catch(err) {
       dispatch(hasErrored(err.message))
       dispatch(addMessage('Internal Server Error, Failed to Create Account'))

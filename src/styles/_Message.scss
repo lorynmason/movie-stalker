@@ -11,6 +11,22 @@
   text-align: center;
   margin: auto;
   top: 100px;
+  animation: fade 15s linear;
+}
+
+@keyframes fade {
+  0%{
+    opacity: .2;
+  }
+  5%{
+    opacity: 1;
+  }
+  90%{
+    opacity: .7;
+  }
+  99%{
+    opacity: .2;
+  }
 }
 
 .blah {

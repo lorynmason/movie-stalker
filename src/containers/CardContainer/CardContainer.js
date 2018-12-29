@@ -10,10 +10,10 @@ export const CardContainer = ({ movies, addFavorite, addMessage, removeFavorite,
   let array = movies;
   if (match.path === '/favorites') {
     if(favorites.length === 0 && user) {
-      return <p className='stalked-message'>You have not stalked any movies</p>
+      return <p className='stalked-message'>You have not Stalked any Movies</p>
     }
     if(!user) {
-      return <p className='stalked-message'>Login to see stalked movies</p>
+      return <p className='stalked-message'>Login to see Stalked Movies</p>
 
     }
     array = favorites;
