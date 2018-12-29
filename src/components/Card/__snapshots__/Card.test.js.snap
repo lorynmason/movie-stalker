@@ -35,11 +35,10 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <button
-          onClick={[Function]}
-        >
+        <button>
           <i
             className="far fa-heart"
+            onClick={[Function]}
           />
         </button>,
         <div>
@@ -68,8 +67,8 @@ ShallowWrapper {
         "props": Object {
           "children": <i
             className="far fa-heart"
+            onClick={[Function]}
           />,
-          "onClick": [Function],
         },
         "ref": null,
         "rendered": Object {
@@ -78,6 +77,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "className": "far fa-heart",
+            "onClick": [Function],
           },
           "ref": null,
           "rendered": null,
@@ -150,11 +150,10 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <button
-            onClick={[Function]}
-          >
+          <button>
             <i
               className="far fa-heart"
+              onClick={[Function]}
             />
           </button>,
           <div>
@@ -183,8 +182,8 @@ ShallowWrapper {
           "props": Object {
             "children": <i
               className="far fa-heart"
+              onClick={[Function]}
             />,
-            "onClick": [Function],
           },
           "ref": null,
           "rendered": Object {
@@ -193,6 +192,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "className": "far fa-heart",
+              "onClick": [Function],
             },
             "ref": null,
             "rendered": null,

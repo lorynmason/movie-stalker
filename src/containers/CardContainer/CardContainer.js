@@ -4,11 +4,22 @@ import PropTypes from 'prop-types';
 import { Card } from '../../components/Card/Card';
 import { postFavorites } from '../../thunks/postFavorites';
 import { deleteFavorite } from '../../thunks/deleteFavorite';
+import { addMessage } from '../../actions'
 
-export const CardContainer = ({ movies, addFavorite, removeFavorite, user, favorites, match }) => {
+export const CardContainer = ({ movies, addFavorite, addMessage, removeFavorite, user, favorites, match }) => {
   let array = movies;
   if (match.path === '/favorites') {
+    if(favorites.length === 0 && user) {
+      return <p className='stalked-message'>You have not Stalked any Movies</p>
+    }
+    if(!user) {
+      return <p className='stalked-message'>Login to see Stalked Movies</p>
+
+    }
     array = favorites;
+  }
+  const sendMessage = (message) => {
+    addMessage(message)
   }
   const cards = array.map(movie => {
     let isFavorite = false;
@@ -22,7 +33,8 @@ export const CardContainer = ({ movies, addFavorite, removeFavorite, user, favor
                   addFavorite={addFavorite} 
                   removeFavorite={removeFavorite}
                   user={user} 
-                  isFavorite={isFavorite}/>)
+                  isFavorite={isFavorite}
+                  sendMessage={sendMessage}/>)
   }
   );
   return <div className="cardContainer">{cards}</div>;
@@ -36,7 +48,8 @@ export const mapStateToProps = state => ({
 
 export const mapDispatchToProps = dispatch => ({
   addFavorite: (movie, userId) => dispatch(postFavorites(movie, userId)),
-  removeFavorite: (userId, movieId) => dispatch(deleteFavorite(userId, movieId))
+  removeFavorite: (userId, movieId) => dispatch(deleteFavorite(userId, movieId)),
+  addMessage: (message) => dispatch(addMessage(message))
 });
 
 export default connect(

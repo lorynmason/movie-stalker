@@ -16,10 +16,11 @@ export const deleteFavorite = (userId, movieId) => {
         throw Error(response.statusText);
       }
       const result = await response.json();
-      console.log(result);
-      dispatch(addMessage('Movie was deleted from favorites'));
-    } catch (err) {
+      console.log(result)
+      dispatch(addMessage('Movie is no longer being Stalked'))
+    } catch(err) {
       dispatch(hasErrored(err.message));
+      dispatch(addMessage('Internal Server Error, Failed to Unstalk Movie'))
     }
   };
 };

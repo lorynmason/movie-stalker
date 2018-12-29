@@ -1,4 +1,4 @@
-import { hasErrored, loginUser } from "../actions";
+import { hasErrored, loginUser, addMessage } from "../actions";
 
 export const postUser = (email, password, name) => {
   return async(dispatch) => {
@@ -19,8 +19,10 @@ export const postUser = (email, password, name) => {
       }
       const result = await response.json()
       dispatch(loginUser({name, id: result.id}))
+      dispatch(addMessage('Success! You are now a Stalker'))
     } catch(err) {
       dispatch(hasErrored(err.message))
+      dispatch(addMessage('Internal Server Error, Failed to Create Account'))
     }
   }
 }

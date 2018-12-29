@@ -23,6 +23,7 @@ export const Message = (props) => {
   }
   return (
     <div className="blah">
+
     </div>
   )
 }

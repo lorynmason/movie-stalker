@@ -34,13 +34,14 @@
   }
   button {
     @include tansparentButton();
-    width: 100px;
-    padding-left: 308px;
+    // width: 100px;
+    margin-left: 300px;
+    // background: blue;
     i {
-      font-size: 3.5em;
+      font-size: 3.8em;
       color: $mainColor;
-      padding: 15px;
-      text-shadow: #000 4px 3px 4px;
+      padding: 10px;
+      text-shadow: rgb(0, 0, 0) 4px 3px 4px;
       &:hover {
         cursor: pointer;
         color: white;

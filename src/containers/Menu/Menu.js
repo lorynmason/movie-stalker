@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { logoutUser } from '../../actions';
+import { logoutUser, addMessage } from '../../actions';
 import { connect } from 'react-redux';
 
 export class Menu extends Component {
@@ -18,6 +18,8 @@ export class Menu extends Component {
 
   handleClick = () => {
     this.props.logoutUser();
+    this.props.addMessage('You are now logged out')
+    this.toggleMenu();
   };
 
   render() {
@@ -63,7 +65,8 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = dispatch => ({
-  logoutUser: () => dispatch(logoutUser())
+  logoutUser: () => dispatch(logoutUser()),
+  addMessage: (message) => dispatch(addMessage(message))
 });
 
 export default connect(

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const Card = ({ movie, user, isFavorite, addFavorite, removeFavorite }) => {
+export const Card = ({ movie, user, isFavorite, addFavorite, sendMessage, removeFavorite }) => {
   const handleClick = () => {
     if (!user) {
-      // add message "you must login to favorite"
+      sendMessage('You must Login to Stalk Movies')
       return;
     }
     if (isFavorite) {
@@ -33,8 +33,8 @@ export const Card = ({ movie, user, isFavorite, addFavorite, removeFavorite }) =
       key={movie_id}
       style={{ backgroundImage: `URL(${poster_path})` }}
     >
-      <button onClick={handleClick}>
-        <i className={heart} />
+      <button>
+        <i className={heart} onClick={handleClick} />
       </button>
       <div>
         <h1>{title}</h1>
