@@ -14,5 +14,3 @@ export const fetchMovies = url => {
     }
   };
 };
-
-//Dispatch loader/error actions??

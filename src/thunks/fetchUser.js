@@ -19,10 +19,14 @@ export const fetchUser = (email, password) => {
       }
       const result = await response.json();
       dispatch(loginUser({ name: result.data.name, id: result.data.id }));
-      dispatch(addMessage('Sucess! You are now Logged in'));
+      dispatch(addMessage('Success! You are now Logged in'));
     } catch (err) {
-      // dispatch(hasErrored(err.message));
-      dispatch(addMessage(err.message));
+      if (err.message.includes('Failed to fetch')) {
+        dispatch(addMessage('We are having technical difficulties. Please try again later'));
+      } else {
+        // dispatch(hasErrored(err.message));
+        dispatch(addMessage(err.message));
+      }
     }
   };
 };
