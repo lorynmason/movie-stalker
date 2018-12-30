@@ -36,6 +36,11 @@ export class App extends Component {
   };
 
   render() {
+    const { user } = this.props;
+    let welcome;
+    if (user) {
+      welcome = <p>Hello, {this.props.user.name}</p>;
+    }
     return (
       <div className="App">
         <h1 className="header">
@@ -46,6 +51,7 @@ export class App extends Component {
             <Link to="/">Stalker</Link>
           </span>
         </h1>
+        {welcome}
         <Menu />
         <Message />
         <Switch>
