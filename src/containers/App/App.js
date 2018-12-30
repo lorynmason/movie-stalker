@@ -14,11 +14,13 @@ import Message from '../Message/Message';
 
 export class App extends Component {
   async componentDidMount() {
+    console.log('hello')
     const url = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=1&with_genres=27&without_genres=10751`;
     this.props.fetchMovies(url);
   }
 
   componentDidUpdate() {
+    console.log('hi')
     if (this.props.user) {
       const userId = this.props.user.id;
       this.props.addFavoritesToStore(userId);

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { App, mapStateToProps, mapDispatchToProps } from './App';
 
 import { fetchMovies } from '../../thunks/fetchMovies';
@@ -14,6 +14,20 @@ describe('App', () => {
   it('matches snapshot with all data correctly rendered', () => {
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('should call fetchMovies when the component mounts', () => {
+    const wrapper = shallow(<App fetchMovies={jest.fn()} addFavoritesToStore={jest.fn()} />);
+
+    expect(wrapper.instance().props.fetchMovies).toHaveBeenCalled()
+  })
+
+  it('should call addFavoritesToStore if there is a user logged in', () => {
+    const wrapper = shallow(<App addFavoritesToStore={jest.fn()} user={true} fetchMovies={jest.fn()} />)
+    
+    expect(wrapper.instance().props.user).toEqual(true);
+    wrapper.update()
+    expect(wrapper.instance().props.addFavoritesToStore).toHaveBeenCalled();
+  })
 
   describe('mapStateToProps', () => {
     it('should return a user object', () => {
@@ -39,25 +53,28 @@ describe('App', () => {
       expect(mappedProps.user).toEqual(expected);
     });
   });
+
   describe('mapDispatchToProps', () => {
     const mockDispatch = jest.fn();
     let actionToDispatch = fetchMovies('http://www.google.com');
+    const url = 'someplace.com';
 
-    it('should call fetchMovies on componentDidMount', () => {
-      actionToDispatch = fetchMovies('http://www.google.com');
-
-      const mappedProps = mapDispatchToProps(mockDispatch);
-      mappedProps.fetchMovies('http://www.google.com');
-
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
-    });
-    it('should call addFavoritesToStore on componentDidUpdate', () => {
-      actionToDispatch = fetchFavorites(1);
+    it('should dispatch fetchMovies thunk when fetchMovies is called from props', () => {
+      const thunkToDispatch = fetchMovies(url);
 
       const mappedProps = mapDispatchToProps(mockDispatch);
-      mappedProps.addFavoritesToStore(1);
+      mappedProps.fetchMovies(url);
 
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
-    });
+      expect(mockDispatch).toHaveBeenCalledWith(thunkToDispatch);
+    })
+
+    it('should dispatch fetchFavorites thunk when addFavoritesToStore is called from props', () => {
+      const thunkToDispatch = fetchFavorites(2);
+
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.addFavoritesToStore(2);
+
+      expect(mockDispatch).toHaveBeenCalledWith(thunkToDispatch);
+    })
   });
 });
