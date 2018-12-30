@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import React from 'react';
 import { Login, mapStateToProps, mapDispatchToProps } from './Login';
 
@@ -68,19 +68,18 @@ describe('handleSubmit', () => {
 })
 
 describe('handleNewUser', () => {
-  it('should set state of newUser to true', () => {
+  it('should toggle the state of newUser', () => {
     let wrapper = shallow(<Login />)
-    const expected = {
-      "email": "", 
-      "errorMessage": "", 
-      "name": "",
-      "newUser": true, 
-      "password": ""
-    }
+    
     wrapper.find('.create-account').simulate('click', {
-      preventDefault: () => {
-      }})
-    expect(wrapper.state()).toEqual(expected)
+      preventDefault: jest.fn()
+    })
+    expect(wrapper.state().newUser).toEqual(true);
+
+    wrapper.find('.create-account').simulate('click', {
+      preventDefault: jest.fn()
+    })
+    expect(wrapper.state().newUser).toEqual(false);
   })
 })
 

@@ -118,7 +118,9 @@ ShallowWrapper {
               "type": "email",
               "value": "",
             },
-            "ref": null,
+            "ref": Object {
+              "current": null,
+            },
             "rendered": null,
             "type": "input",
           },
@@ -287,7 +289,9 @@ ShallowWrapper {
                 "type": "email",
                 "value": "",
               },
-              "ref": null,
+              "ref": Object {
+                "current": null,
+              },
               "rendered": null,
               "type": "input",
             },

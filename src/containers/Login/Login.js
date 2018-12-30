@@ -18,9 +18,9 @@ export class Login extends Component {
     }
   }
 
-  componentDidMount() {
-    this.emailInput.current.focus();
-  }
+  // componentDidMount() {
+  //   this.emailInput.current.focus();
+  // }
 
   handleInputChange = e => {
     const { name, value } = e.target;
