@@ -24,9 +24,12 @@ export const postUser = (email, password, name) => {
       dispatch(loginUser({name, id: result.id}))
       dispatch(addMessage('Success! You are now a Stalker'))
     } catch(err) {
-      console.log(err.message)
-      // dispatch(hasErrored(err.message))
-      dispatch(addMessage(err.message))
+      if (err.message.includes('Failed to fetch')) {
+        dispatch(addMessage('We are having technical difficulties. Please try again later'));
+      } else {
+        // dispatch(hasErrored(err.message));
+        dispatch(addMessage(err.message));
+      }
     }
   }
 }

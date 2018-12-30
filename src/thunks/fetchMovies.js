@@ -5,7 +5,6 @@ export const fetchMovies = url => {
     try {
       const response = await fetch(url);
       if (!response.ok) {
-        console.log(response)
         throw Error(response.statusText);
       }
       const movies = await response.json();

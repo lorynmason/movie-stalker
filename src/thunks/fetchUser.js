@@ -21,14 +21,12 @@ export const fetchUser = (email, password) => {
       dispatch(loginUser({ name: result.data.name, id: result.data.id }));
       dispatch(addMessage('Success! You are now Logged in'));
     } catch (err) {
-      console.log(err.message)
       if (err.message.includes('Failed to fetch')) {
         dispatch(addMessage('We are having technical difficulties. Please try again later'));
       } else {
         // dispatch(hasErrored(err.message));
         dispatch(addMessage(err.message));
       }
-
     }
   };
 };
