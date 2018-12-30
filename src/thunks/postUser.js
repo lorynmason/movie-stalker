@@ -18,6 +18,8 @@ export const postUser = (email, password, name) => {
         const error = await response.json();
         if (error.error.includes('already exists')) {
           throw Error('Email has already been used')
+        } else {
+          throw Error(error.error);
         }
       }
       const result = await response.json();
