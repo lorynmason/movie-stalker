@@ -4,14 +4,14 @@ import { Login, mapStateToProps, mapDispatchToProps } from './Login';
 
 describe('Login container', () => {
   it('should match the snapshot', () => {
-    let wrapper = shallow(<Login />)
+    let wrapper = shallow(<Login />, {disableLifecycleMethods: true})
     expect(wrapper).toMatchSnapshot()
   })
 })
 
 describe('handleInputChange', () => {
   it('should update state on change', () => {
-    let wrapper = shallow(<Login />)
+    let wrapper = shallow(<Login />, {disableLifecycleMethods: true});
     wrapper.find('#email-input').simulate('change', 
     { 
       target: 
@@ -43,7 +43,7 @@ describe('handleSubmit', () => {
   let wrapper;
   it('should call handleSubmit and should call addUserToStore if !newUser', () => {
     const mockAddUserToStore = jest.fn()
-    wrapper = shallow(<Login addUserToStore={mockAddUserToStore}/>)
+    wrapper = shallow(<Login addUserToStore={mockAddUserToStore}/>, {disableLifecycleMethods: true});
     wrapper.handleSubmit = jest.fn()
     wrapper.addUserToStore = mockAddUserToStore
 
@@ -56,7 +56,7 @@ describe('handleSubmit', () => {
   })
   it('should call addNewUserToStore if new user',() => {
     const mockAddUserToStore = jest.fn()
-    wrapper = shallow(<Login addNewUserToStore={mockAddUserToStore}/>)
+    wrapper = shallow(<Login addNewUserToStore={mockAddUserToStore}/>, {disableLifecycleMethods: true});
     wrapper.handleSubmit = jest.fn()
     wrapper.addNewUserToStore = mockAddUserToStore
     wrapper.setState({newUser: true})
@@ -69,7 +69,7 @@ describe('handleSubmit', () => {
 
 describe('handleNewUser', () => {
   it('should toggle the state of newUser', () => {
-    let wrapper = shallow(<Login />)
+    let wrapper = shallow(<Login />, {disableLifecycleMethods: true});
     
     wrapper.find('.create-account').simulate('click', {
       preventDefault: jest.fn()
