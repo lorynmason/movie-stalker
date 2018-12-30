@@ -49,11 +49,16 @@ export class Menu extends Component {
     } else {
       return (
         <div className="full-menu">
+          <p>
+            <Link className="menu-item a-tag" to="/" onClick={this.toggleMenu}>
+              Home
+            </Link>
+          </p>
           <button onClick={this.toggleMenu}>X</button>
           {log}
           <p>
             <Link
-              className="menu-item"
+              className="menu-item a-tag"
               to="/favorites"
               onClick={this.toggleMenu}
             >

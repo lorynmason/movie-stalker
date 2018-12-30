@@ -36,8 +36,14 @@ export class App extends Component {
   };
 
   render() {
+    const { user } = this.props;
+    let welcome;
+    if (user) {
+      welcome = <p className="welcome">Hello, {this.props.user.name}</p>;
+    }
     return (
       <div className="App">
+        {welcome}
         <h1 className="header">
           <span className="movie">
             <Link to="/">Movie</Link>
