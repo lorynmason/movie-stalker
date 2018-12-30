@@ -30,6 +30,7 @@ export class Menu extends Component {
         </Link>
       </p>
     );
+    
     if (this.props.user) {
       log = (
         <p className="menu-item" id="logout" onClick={this.handleClick}>

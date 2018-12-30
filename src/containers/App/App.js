@@ -19,6 +19,7 @@ export class App extends Component {
   }
 
   componentDidUpdate() {
+    console.log('hi')
     if (this.props.user) {
       const userId = this.props.user.id;
       this.props.addFavoritesToStore(userId);

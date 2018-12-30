@@ -1,5 +1,5 @@
 import { postUser } from '../postUser';
-import { loginUser, hasErrored } from '../../actions';
+import { loginUser, hasErrored, addMessage } from '../../actions';
 
 describe('postUser', () => {
   const email = 'me@email.com';
@@ -27,7 +27,7 @@ describe('postUser', () => {
     expect(window.fetch).toHaveBeenCalledWith('http://localhost:3000/api/users/new', expectedBody);
   })
   
-  it('should dispatch hasErrored with a message if promise rejects', async () => {
+  it('should dispatch addMessage with a message if promise rejects', async () => {
     window.fetch = jest.fn().mockImplementation(() =>
       Promise.reject({
         message: 'an error has occurred'
@@ -36,20 +36,43 @@ describe('postUser', () => {
 
     const thunk = postUser(email, password, name);
     await thunk(mockDispatch);
-    expect(mockDispatch).toHaveBeenCalledWith(hasErrored('an error has occurred'));
+    expect(mockDispatch).toHaveBeenCalledWith(addMessage('an error has occurred'));
   });
 
-  it('should dispatch hasErrored if the response is not ok', async () => {
+  it('should dispatch addMessage if the response is not ok', async () => {
     window.fetch = jest.fn().mockImplementation(() => {
       return Promise.resolve({
         ok: false,
-        statusText: 'an error has occurred'
+        json: () => {
+          return Promise.resolve({
+            error: 'an error has occurred'
+          })
+        }
       })
     })
 
     const thunk = postUser(email, password, name);
     await thunk(mockDispatch);
-    expect(mockDispatch).toHaveBeenCalledWith(hasErrored('an error has occurred'));
+    expect(mockDispatch).toHaveBeenCalledWith(addMessage('an error has occurred'));
+  });
+
+  it('should dispatch addMessage with a message if the response is not ok and the server has returned a status of "already exists"', async () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: false,
+        json: () => {
+          return Promise.resolve({
+            error: 'Email already exists'
+          })
+        }
+      })
+    })
+
+    const expected = 'Email has already been used';
+
+    const thunk = postUser(email, password, name);
+    await thunk(mockDispatch);
+    expect(mockDispatch).toHaveBeenCalledWith(addMessage(expected))
   })
 
   it('Dispatches user data with loginUser if response is ok', async () => {

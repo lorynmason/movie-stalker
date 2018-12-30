@@ -16,6 +16,7 @@ export const CardContainer = ({
   match
 }) => {
   let array = movies;
+
   if (match.path === '/favorites') {
     if (favorites.length === 0 && user) {
       return <p className="stalked-message">You have not Stalked any Movies</p>;
@@ -25,9 +26,11 @@ export const CardContainer = ({
     }
     array = favorites;
   }
+
   const sendMessage = message => {
     addMessage(message);
   };
+
   const cards = array.map(movie => {
     let isFavorite = false;
     favorites.forEach(fav => {
@@ -35,6 +38,7 @@ export const CardContainer = ({
         isFavorite = true;
       }
     });
+
     return (
       <Card
         movie={movie}
@@ -47,6 +51,7 @@ export const CardContainer = ({
       />
     );
   });
+  
   return <div className="cardContainer">{cards}</div>;
 };
 
