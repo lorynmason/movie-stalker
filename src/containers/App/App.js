@@ -10,21 +10,30 @@ import { Link } from 'react-router-dom';
 import '../../styles/main.scss';
 import { fetchMovies } from '../../thunks/fetchMovies';
 import { fetchFavorites } from '../../thunks/fetchFavorites';
+import { loginUser } from '../../actions';
 import Message from '../Message/Message';
 
 export class App extends Component {
   async componentDidMount() {
+    this.checkLocalStorage();
     const url = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=1&with_genres=27&without_genres=10751`;
     this.props.fetchMovies(url);
   }
 
   componentDidUpdate() {
-    console.log('hi')
+    console.log('hi');
     if (this.props.user) {
       const userId = this.props.user.id;
       this.props.addFavoritesToStore(userId);
     }
   }
+
+  checkLocalStorage = () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      this.props.addStoredUser(user);
+    }
+  };
 
   render() {
     return (
@@ -61,7 +70,8 @@ export const mapStateToProps = state => ({
 
 export const mapDispatchToProps = dispatch => ({
   fetchMovies: url => dispatch(fetchMovies(url)),
-  addFavoritesToStore: userId => dispatch(fetchFavorites(userId))
+  addFavoritesToStore: userId => dispatch(fetchFavorites(userId)),
+  addStoredUser: userObj => dispatch(loginUser(userObj))
 });
 
 export default withRouter(
