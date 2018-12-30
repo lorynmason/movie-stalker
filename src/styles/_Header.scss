@@ -9,6 +9,9 @@
     text-decoration: none;
     color: black;
   }
+  &:hover {
+    text-shadow: $mainColor -25px 40px 10px;
+  }
 }
 
 .movie {
@@ -34,7 +37,7 @@
     transform: skew(-30deg);
     opacity: 0;
   }
-  
+
   80% {
     transform: skew(-30deg);
   }
@@ -42,7 +45,7 @@
   90% {
     transform: skew(10deg);
   }
-  
+
   100% {
     left: 60px;
     transform: none;
@@ -53,13 +56,13 @@
   0% {
     opacity: 0;
   }
-  
+
   50% {
     left: -200px;
     transform: skew(-30deg);
     opacity: 0;
   }
-  
+
   90% {
     transform: skew(-30deg);
   }
@@ -67,7 +70,7 @@
   95% {
     transform: skew(10deg);
   }
-  
+
   100% {
     left: 450px;
     transform: none;
