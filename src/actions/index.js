@@ -23,6 +23,10 @@ export const hasErrored = message => ({
   message
 });
 
+export const removeFavorites = () => ({
+  type: 'REMOVE_FAVORITES'
+});
+
 export const retrieveAllFavorites = favorites => {
   return {
     type: 'RETRIEVE_ALL_FAVORITES',

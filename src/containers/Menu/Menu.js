@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { logoutUser, addMessage } from '../../actions';
+import { logoutUser, addMessage, removeFavorites } from '../../actions';
 import { connect } from 'react-redux';
 
 export class Menu extends Component {
@@ -17,8 +17,10 @@ export class Menu extends Component {
   };
 
   handleClick = () => {
+    localStorage.removeItem('user');
     this.props.logoutUser();
-    this.props.addMessage('You are now logged out')
+    this.props.removeFavorites();
+    this.props.addMessage('You are now logged out');
     this.toggleMenu();
   };
 
@@ -30,7 +32,7 @@ export class Menu extends Component {
         </Link>
       </p>
     );
-    
+
     if (this.props.user) {
       log = (
         <p className="menu-item" id="logout" onClick={this.handleClick}>
@@ -50,7 +52,11 @@ export class Menu extends Component {
           <button onClick={this.toggleMenu}>X</button>
           {log}
           <p>
-            <Link className='menu-item' to="/favorites" onClick={this.toggleMenu}>
+            <Link
+              className="menu-item"
+              to="/favorites"
+              onClick={this.toggleMenu}
+            >
               Stalked: <span>{this.props.allFavorites.length}</span>
             </Link>
           </p>
@@ -60,14 +66,15 @@ export class Menu extends Component {
   }
 }
 
-export const mapStateToProps = (state) => ({
+export const mapStateToProps = state => ({
   user: state.user,
   allFavorites: state.favorites
-})
+});
 
 export const mapDispatchToProps = dispatch => ({
   logoutUser: () => dispatch(logoutUser()),
-  addMessage: (message) => dispatch(addMessage(message))
+  addMessage: message => dispatch(addMessage(message)),
+  removeFavorites: () => dispatch(removeFavorites())
 });
 
 export default connect(

@@ -18,13 +18,19 @@ export const fetchUser = (email, password) => {
         throw Error('Email and password do not match');
       }
       const result = await response.json();
-      dispatch(loginUser({ name: result.data.name, id: result.data.id }));
+      const userObj = { name: result.data.name, id: result.data.id };
+      localStorage.setItem('user', JSON.stringify(userObj));
+      dispatch(loginUser(userObj));
       dispatch(addMessage('Success! You are now Logged in'));
     } catch (err) {
       if (err.message.includes('Failed to fetch')) {
-        dispatch(addMessage('We are having technical difficulties. Please try again later'));
+        dispatch(
+          addMessage(
+            'We are having technical difficulties. Please try again later'
+          )
+        );
       } else {
-        // dispatch(hasErrored(err.message));
+        dispatch(hasErrored(err.message));
         dispatch(addMessage(err.message));
       }
     }
