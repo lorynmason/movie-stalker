@@ -23,7 +23,12 @@ export class Login extends Component {
   }
 
   componentDidUpdate() { 
-    this.nameInput.current.focus();
+    const { newUser } = this.state;
+    if (newUser) {
+      this.nameInput.current.focus();
+    } else {
+      this.emailInput.current.focus();
+    }
   }
 
   handleInputChange = e => {
@@ -46,7 +51,7 @@ export class Login extends Component {
   handleNewUser = (e) => {
     e.preventDefault();
     this.setState({
-      newUser: true
+      newUser: !this.state.newUser
     })
   }
 
@@ -70,7 +75,11 @@ export class Login extends Component {
               ref={this.nameInput}
             />
             )
-      createNewUser = ''
+      createNewUser = (
+        <p className="create-account" onClick={this.handleNewUser}>
+    Login as existing user
+    </p>
+      )
     } else {
       buttonText = 'Submit';
       nameInput = '';
