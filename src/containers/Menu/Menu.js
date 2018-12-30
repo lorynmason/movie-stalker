@@ -32,7 +32,7 @@ export class Menu extends Component {
     );
     if (this.props.user) {
       log = (
-        <p className="menu-item" onClick={this.handleClick}>
+        <p className="menu-item" id="logout" onClick={this.handleClick}>
           Logout
         </p>
       );
