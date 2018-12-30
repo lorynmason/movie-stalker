@@ -7,6 +7,8 @@ import { postUser } from '../../thunks/postUser'
 export class Login extends Component {
   constructor() {
     super();
+    this.emailInput = React.createRef();
+    this.nameInput = React.createRef();
     this.state = {
       name: '',
       email: '',
@@ -15,6 +17,19 @@ export class Login extends Component {
       newUser: false
     }
   }
+
+  componentDidMount() {
+    this.emailInput.current.focus();
+  }
+
+  // componentDidUpdate() { 
+  //   const { newUser } = this.state;
+  //   if (newUser) {
+  //     this.nameInput.current.focus();
+  //   } else {
+  //     this.emailInput.current.focus();
+  //   }
+  // }
 
   handleInputChange = e => {
     const { name, value } = e.target;
@@ -36,7 +51,7 @@ export class Login extends Component {
   handleNewUser = (e) => {
     e.preventDefault();
     this.setState({
-      newUser: true
+      newUser: !this.state.newUser
     })
   }
 
@@ -57,9 +72,14 @@ export class Login extends Component {
               value={name}
               onChange={this.handleInputChange}
               name="name"
+              ref={this.nameInput}
             />
             )
-      createNewUser = ''
+      createNewUser = (
+        <p className="create-account" onClick={this.handleNewUser}>
+    Login as existing user
+    </p>
+      )
     } else {
       buttonText = 'Submit';
       nameInput = '';
@@ -79,6 +99,7 @@ export class Login extends Component {
              value={email}
              onChange={this.handleInputChange}
              name="email"
+             ref={this.emailInput}
            />
            <input
              id="password-input"
