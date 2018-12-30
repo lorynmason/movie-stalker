@@ -14,15 +14,15 @@ export const fetchUser = (email, password) => {
         })
       });
       if (!response.ok) {
-        dispatch(addMessage('Password or Email does not Match'));
-        throw Error(response.statusText);
+        console.log(response.statusText);
+        throw Error('Email and password do not match');
       }
       const result = await response.json();
       dispatch(loginUser({ name: result.data.name, id: result.data.id }));
       dispatch(addMessage('Sucess! You are now Logged in'));
     } catch (err) {
-      dispatch(hasErrored(err.message));
-      dispatch(addMessage('Internal Server Error, Failed to Login'));
+      // dispatch(hasErrored(err.message));
+      dispatch(addMessage(err.message));
     }
   };
 };

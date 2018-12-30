@@ -15,14 +15,18 @@ export const postUser = (email, password, name) => {
         })
       });
       if(!response.ok) {
-        throw Error(response.statusText)
+        const error = await response.json();
+        if (error.error.includes('already exists')) {
+          throw Error('Email has already been used')
+        }
       }
-      const result = await response.json()
+      const result = await response.json();
       dispatch(loginUser({name, id: result.id}))
       dispatch(addMessage('Success! You are now a Stalker'))
     } catch(err) {
-      dispatch(hasErrored(err.message))
-      dispatch(addMessage('Internal Server Error, Failed to Create Account'))
+      console.log(err.message)
+      // dispatch(hasErrored(err.message))
+      dispatch(addMessage(err.message))
     }
   }
 }
