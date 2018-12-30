@@ -27,6 +27,14 @@
   animation: stalker-rush-in 1.5s ease;
 }
 
+.welcome {
+  float: right;
+  margin: -15px 70px 0 0;
+  font-family: 'Special Elite', cursive;
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
 @keyframes movie-rush-in {
   0% {
     opacity: 0;

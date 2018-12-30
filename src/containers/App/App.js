@@ -39,10 +39,11 @@ export class App extends Component {
     const { user } = this.props;
     let welcome;
     if (user) {
-      welcome = <p>Hello, {this.props.user.name}</p>;
+      welcome = <p className="welcome">Hello, {this.props.user.name}</p>;
     }
     return (
       <div className="App">
+        {welcome}
         <h1 className="header">
           <span className="movie">
             <Link to="/">Movie</Link>
@@ -51,7 +52,6 @@ export class App extends Component {
             <Link to="/">Stalker</Link>
           </span>
         </h1>
-        {welcome}
         <Menu />
         <Message />
         <Switch>
