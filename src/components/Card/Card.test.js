@@ -13,12 +13,17 @@ describe('Card', () => {
     title: 'Split',
     vote_average: 7.2
   };
+
   const mockUser = {
     id: 1
   };
+
   const mockFunc = jest.fn();
-  let wrapper = shallow(
-    <Card
+  
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(
+      <Card
       movie={mockMovie}
       user={mockUser}
       addFavorite={mockFunc}
@@ -26,8 +31,10 @@ describe('Card', () => {
       isFavorite={false}
       sendMessage={mockFunc}
       removeFavorite={mockFunc}
-    />
-  );
+      />
+    );
+  })
+      
   it('should render snapshot with correct data', () => {
     expect(wrapper).toMatchSnapshot();
   });
@@ -36,6 +43,11 @@ describe('Card', () => {
     wrapper.find('i').simulate('click');
     expect(mockFunc.mock.calls.length).toEqual(1);
   });
+
+  it('should call sendMessage with a message if the user clicks and is not logged in', () => {
+    wrapper.find('i').simulate('click');
+    expect(wrapper.props().sendMessage).toHaveBeenCalled();
+  })
 
   it('should initially render favorite button as an empty heart', () => {
     const result = wrapper.find('i').hasClass('far fa-heart');

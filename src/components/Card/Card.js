@@ -9,6 +9,7 @@ export const Card = ({
   sendMessage,
   removeFavorite
 }) => {
+  
   const handleClick = () => {
     if (!user) {
       sendMessage('You must Login to Stalk Movies');

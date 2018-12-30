@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { App, mapStateToProps, mapDispatchToProps } from './App';
-
 import { fetchMovies } from '../../thunks/fetchMovies';
-
 import { fetchFavorites } from '../../thunks/fetchFavorites';
 
 describe('App', () => {
@@ -56,7 +54,6 @@ describe('App', () => {
 
   describe('mapDispatchToProps', () => {
     const mockDispatch = jest.fn();
-    let actionToDispatch = fetchMovies('http://www.google.com');
     const url = 'someplace.com';
 
     it('should dispatch fetchMovies thunk when fetchMovies is called from props', () => {
