@@ -27,7 +27,7 @@ export class Menu extends Component {
   render() {
     let log = (
       <p>
-        <Link className="menu-item" to="/login" onClick={this.toggleMenu}>
+        <Link className="menu-item" id="login" to="/login" onClick={this.toggleMenu}>
           Login
         </Link>
       </p>
@@ -49,22 +49,24 @@ export class Menu extends Component {
     } else {
       return (
         <div className="full-menu">
-          <p>
-            <Link className="menu-item a-tag" to="/" onClick={this.toggleMenu}>
-              Home
-            </Link>
-          </p>
-          <button onClick={this.toggleMenu}>X</button>
-          {log}
-          <p>
-            <Link
-              className="menu-item a-tag"
-              to="/favorites"
-              onClick={this.toggleMenu}
-            >
-              Stalked: <span>{this.props.allFavorites.length}</span>
-            </Link>
-          </p>
+          <div className="menu-items">
+            <button onClick={this.toggleMenu}>X</button>
+            <p>
+              <Link className="menu-item a-tag" to="/" onClick={this.toggleMenu}>
+                Home
+              </Link>
+            </p>
+            {log}
+            <p>
+              <Link
+                className="menu-item a-tag"
+                to="/favorites"
+                onClick={this.toggleMenu}
+                >
+                Stalked: <span>{this.props.allFavorites.length}</span>
+              </Link>
+            </p>
+          </div>
         </div>
       );
     }

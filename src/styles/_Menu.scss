@@ -43,24 +43,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  // flex-direction: column;
   animation-name: zoomIn;
   animation-duration: 0.7s;
-  .menu-item {
-    text-decoration: none;
-    margin: 5px;
-    @include menuItem(2em);
-    padding-bottom: 10px;
-  }
-
-  .a-tag {
-    margin-bottom: 10px;
+  .menu-items {
+    height: 160px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    .menu-item {
+      text-decoration: none;
+      @include menuItem(2em);
+    }
   }
 
   button {
     @include tansparentButton();
-    margin: -60px 0px 15px;
     @include menuItem(1.5em);
+    margin-bottom: 10px;
   }
 
   @keyframes fadeIn {
