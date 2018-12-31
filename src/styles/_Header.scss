@@ -10,7 +10,7 @@
     color: black;
   }
   &:hover {
-    text-shadow: $mainColor -25px 40px 10px;
+    text-shadow: $transparentMainColor -12px 20px 10px, #c7c7c7 -25px 40px 10px;
   }
 }
 
@@ -29,10 +29,10 @@
 
 .welcome {
   float: right;
-  margin: -15px 70px 0 0;
+  margin: -15px 40px 0 0;
   font-family: 'Special Elite', cursive;
   font-weight: bold;
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 
 @keyframes movie-rush-in {
