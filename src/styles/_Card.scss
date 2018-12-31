@@ -7,7 +7,11 @@
   background-size: cover;
   display: flex;
   flex-direction: column;
-  box-shadow: $transparentMainColor 4px 4px 10px, #000 -4px -2px 10px;
+  box-shadow: 
+    $transparentMainColor 4px 4px 10px,
+    $transparentMainColor 2px 0px 10px,
+    #000 -2px 0px 10px,
+    #000 -4px -2px 10px;
   transition: all 0.3s ease;
   div {
     color: transparent;
@@ -16,6 +20,11 @@
     overflow: scroll;
   }
   &:hover {
+    box-shadow: 
+      rgba(0, 0, 0, 0.582) 4px 4px 10px,
+      rgba(0, 0, 0, 0.582) 2px 0px 10px,
+      rgba(0, 0, 0, 0.582) -2px 0px 10px,
+      rgba(0, 0, 0, 0.582) -4px -2px 10px;
     transform: scale(1.05);
     div {
       background: $transparentMainColor;
@@ -33,9 +42,7 @@
   }
   button {
     @include tansparentButton();
-    // width: 100px;
     margin-left: 300px;
-    // background: blue;
     i {
       font-size: 3.8em;
       color: $mainColor;
