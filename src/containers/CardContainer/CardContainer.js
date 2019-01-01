@@ -27,10 +27,6 @@ export const CardContainer = ({
     array = favorites;
   }
 
-  const sendMessage = message => {
-    addMessage(message);
-  };
-
   const cards = array.map(movie => {
     let isFavorite = false;
     favorites.forEach(fav => {
@@ -47,7 +43,7 @@ export const CardContainer = ({
         removeFavorite={removeFavorite}
         user={user}
         isFavorite={isFavorite}
-        sendMessage={sendMessage}
+        sendMessage={addMessage}
       />
     );
   });

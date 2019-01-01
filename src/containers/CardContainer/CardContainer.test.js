@@ -3,7 +3,7 @@ import {
   mapStateToProps,
   mapDispatchToProps
 } from './CardContainer';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import React from 'react';
 import { postFavorites } from '../../thunks/postFavorites';
 import { deleteFavorite } from '../../thunks/deleteFavorite';
@@ -11,7 +11,7 @@ import * as actions from '../../actions';
 
 describe('CardContainer', () => {
   const mockFunc = jest.fn();
-  const match = {
+  let match = {
     path: '/favorites'
   };
   const mockMovies = [
@@ -19,8 +19,11 @@ describe('CardContainer', () => {
     { title: 'It', movie_id: 2 },
     { title: 'The Conjuring', movie_id: 3 }
   ]
-  const mockFavorites = mockMovies
+  let mockFavorites = mockMovies
   let wrapper;
+  let mockUser = {
+    id: 1
+  }
   beforeEach(() => {
     wrapper = shallow(
       <CardContainer
@@ -30,12 +33,34 @@ describe('CardContainer', () => {
         addMessage={mockFunc}
         removeFavorite={mockFunc}
         match={match}
+        user={mockUser}
       />
     );
   })
     
   describe('CardContainer Component', () => {
     it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    })
+
+    it('should match snapshot if there is 0 favorites', () => {
+      mockFavorites = []
+      expect(wrapper).toMatchSnapshot();
+    })
+    
+    it('should match snapshot if there is no uset', () => {
+      mockFavorites = mockMovies
+      mockUser = null
+      expect(wrapper).toMatchSnapshot();
+    })
+
+    it('should match snapshot if match !== favorites', () => {
+      match = {
+        path: '/'
+      }
+      mockUser = {
+        id: 1
+      }
       expect(wrapper).toMatchSnapshot();
     })
   });
@@ -91,21 +116,18 @@ describe('CardContainer', () => {
     
     it('should dispatch postFavorites thunk when addFavorite is called from props', () => {
       const movie = {title: 'Jaws'}
-      const thunkToDispatch = postFavorites(movie, 2);
 
       const mappedProps = mapDispatchToProps(mockDispatch);
       mappedProps.addFavorite(movie, 2);
 
-      expect(mockDispatch).toHaveBeenCalledWith(thunkToDispatch);
+      expect(mockDispatch).toHaveBeenCalled();
     })
 
     it('should dispatch deleteFavorite thunk when removeFavorite is called from props', () => {
-      const thunkToDispatch = deleteFavorite(2, 3);
-
       const mappedProps = mapDispatchToProps(mockDispatch);
       mappedProps.removeFavorite(2, 3);
 
-      expect(mockDispatch).toHaveBeenCalledWith(thunkToDispatch);
+      expect(mockDispatch).toHaveBeenCalled();
     })
 
     it('should dispatch addMessage action when addMessage is called from props', () => {

@@ -59,13 +59,12 @@ describe('Card', () => {
     wrapper.find('i').simulate('click');
     expect(mockFunc).toHaveBeenCalled();
   })
-  
+
   it('should call sendMessage with a message if the user clicks and is not logged in', () => {
     wrapper.find('i').simulate('click');
     mockUser = null
     expect(mockFunc).toHaveBeenCalled();
   })
-
 
   it('should initially render favorite button as an empty heart', () => {
     const result = wrapper.find('i').hasClass('far fa-heart');
