@@ -3,7 +3,7 @@ import {
   mapStateToProps,
   mapDispatchToProps
 } from './CardContainer';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import React from 'react';
 import { postFavorites } from '../../thunks/postFavorites';
 import { deleteFavorite } from '../../thunks/deleteFavorite';
@@ -14,20 +14,30 @@ describe('CardContainer', () => {
   const match = {
     path: '/favorites'
   };
-
-  let wrapper = shallow(
-    <CardContainer
-      movies={[]}
-      addFavorite={mockFunc}
-      favorites={[]}
-      sendMessage={mockFunc}
-      removeFavorite={mockFunc}
-      match={match}
-    />
-  );
-
+  const mockMovies = [
+    { title: 'Halloween', movie_id: 1},
+    { title: 'It', movie_id: 2 },
+    { title: 'The Conjuring', movie_id: 3 }
+  ]
+  const mockFavorites = mockMovies
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(
+      <CardContainer
+        movies={mockMovies}
+        addFavorite={mockFunc}
+        favorites={mockFavorites}
+        addMessage={mockFunc}
+        removeFavorite={mockFunc}
+        match={match}
+      />
+    );
+  })
+    
   describe('CardContainer Component', () => {
-    expect(wrapper).toMatchSnapshot();
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    })
   });
 
   describe('mapStateToProps', () => {

@@ -16,6 +16,7 @@ export const Card = ({
       return;
     }
     if (isFavorite) {
+      console.log('hi')
       removeFavorite(user.id, movie.movie_id);
     } else {
       addFavorite(movie, user.id);

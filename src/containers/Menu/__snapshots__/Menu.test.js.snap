@@ -120,6 +120,16 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
+        <p>
+          <Link
+            className="menu-item a-tag"
+            onClick={[Function]}
+            replace={false}
+            to="/"
+          >
+            Home
+          </Link>
+        </p>,
         <button
           onClick={[Function]}
         >
@@ -134,7 +144,7 @@ ShallowWrapper {
         </p>,
         <p>
           <Link
-            className="menu-item"
+            className="menu-item a-tag"
             onClick={[Function]}
             replace={false}
             to="/favorites"
@@ -150,6 +160,38 @@ ShallowWrapper {
     },
     "ref": null,
     "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <Link
+            className="menu-item a-tag"
+            onClick={[Function]}
+            replace={false}
+            to="/"
+          >
+            Home
+          </Link>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "Home",
+            "className": "menu-item a-tag",
+            "onClick": [Function],
+            "replace": false,
+            "to": "/",
+          },
+          "ref": null,
+          "rendered": "Home",
+          "type": [Function],
+        },
+        "type": "p",
+      },
       Object {
         "instance": null,
         "key": undefined,
@@ -182,7 +224,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": <Link
-            className="menu-item"
+            className="menu-item a-tag"
             onClick={[Function]}
             replace={false}
             to="/favorites"
@@ -205,7 +247,7 @@ ShallowWrapper {
                 0
               </span>,
             ],
-            "className": "menu-item",
+            "className": "menu-item a-tag",
             "onClick": [Function],
             "replace": false,
             "to": "/favorites",
@@ -239,6 +281,16 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
+          <p>
+            <Link
+              className="menu-item a-tag"
+              onClick={[Function]}
+              replace={false}
+              to="/"
+            >
+              Home
+            </Link>
+          </p>,
           <button
             onClick={[Function]}
           >
@@ -253,7 +305,7 @@ ShallowWrapper {
           </p>,
           <p>
             <Link
-              className="menu-item"
+              className="menu-item a-tag"
               onClick={[Function]}
               replace={false}
               to="/favorites"
@@ -269,6 +321,38 @@ ShallowWrapper {
       },
       "ref": null,
       "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <Link
+              className="menu-item a-tag"
+              onClick={[Function]}
+              replace={false}
+              to="/"
+            >
+              Home
+            </Link>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Home",
+              "className": "menu-item a-tag",
+              "onClick": [Function],
+              "replace": false,
+              "to": "/",
+            },
+            "ref": null,
+            "rendered": "Home",
+            "type": [Function],
+          },
+          "type": "p",
+        },
         Object {
           "instance": null,
           "key": undefined,
@@ -301,7 +385,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": <Link
-              className="menu-item"
+              className="menu-item a-tag"
               onClick={[Function]}
               replace={false}
               to="/favorites"
@@ -324,7 +408,7 @@ ShallowWrapper {
                   0
                 </span>,
               ],
-              "className": "menu-item",
+              "className": "menu-item a-tag",
               "onClick": [Function],
               "replace": false,
               "to": "/favorites",

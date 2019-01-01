@@ -1,19 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[` 1`] = `
+exports[`CardContainer CardContainer Component should match snapshot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <CardContainer
     addFavorite={[MockFunction]}
-    favorites={Array []}
+    addMessage={[MockFunction]}
+    favorites={
+      Array [
+        Object {
+          "movie_id": 1,
+          "title": "Halloween",
+        },
+        Object {
+          "movie_id": 2,
+          "title": "It",
+        },
+        Object {
+          "movie_id": 3,
+          "title": "The Conjuring",
+        },
+      ]
+    }
     match={
       Object {
         "path": "/favorites",
       }
     }
-    movies={Array []}
+    movies={
+      Array [
+        Object {
+          "movie_id": 1,
+          "title": "Halloween",
+        },
+        Object {
+          "movie_id": 2,
+          "title": "It",
+        },
+        Object {
+          "movie_id": 3,
+          "title": "The Conjuring",
+        },
+      ]
+    }
     removeFavorite={[MockFunction]}
-    sendMessage={[MockFunction]}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
