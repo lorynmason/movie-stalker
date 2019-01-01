@@ -14,7 +14,7 @@ describe('Card', () => {
     vote_average: 7.2
   };
 
-  const mockUser = {
+  let mockUser = {
     id: 1
   };
 
@@ -44,9 +44,26 @@ describe('Card', () => {
     expect(mockFunc.mock.calls.length).toEqual(1);
   });
 
+  it('should call removeFavorite if the user clicks and card is already favorited', () => {
+    wrapper = wrapper = shallow(
+      <Card
+      movie={mockMovie}
+      user={mockUser}
+      addFavorite={mockFunc}
+      onClick={mockFunc}
+      isFavorite={true}
+      sendMessage={mockFunc}
+      removeFavorite={mockFunc}
+      />
+    );
+    wrapper.find('i').simulate('click');
+    expect(mockFunc).toHaveBeenCalled();
+  })
+
   it('should call sendMessage with a message if the user clicks and is not logged in', () => {
     wrapper.find('i').simulate('click');
-    expect(wrapper.props().sendMessage).toHaveBeenCalled();
+    mockUser = null
+    expect(mockFunc).toHaveBeenCalled();
   })
 
   it('should initially render favorite button as an empty heart', () => {
