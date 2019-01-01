@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Menu, mapStateToProps, mapDispatchToProps } from './Menu';
-import { logoutUser, addMessage } from '../../actions';
+import { logoutUser, addMessage, removeFavorites } from '../../actions';
 
 describe('Menu', () => {
-  const mockUser = { id: 1 };
+  let mockUser = null;
   const mockFunc = jest.fn();
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<Menu logoutUser={mockFunc} allFavorites={[]} user={mockUser} addMessage={mockFunc}/>);
+    wrapper = shallow(<Menu logoutUser={mockFunc} allFavorites={[]} user={mockUser} addMessage={mockFunc} removeFavorites={mockFunc}/>);
   })
   it('should match snapshot with correct data', () => {
     expect(wrapper).toMatchSnapshot();
@@ -16,6 +16,7 @@ describe('Menu', () => {
 
   it('should match the snapshot when there is a user', () => {
     wrapper.setState({fullMenu: true})
+    mockUser = {id: 1}
     expect(wrapper).toMatchSnapshot();
   })
 
@@ -26,11 +27,12 @@ describe('Menu', () => {
     wrapper.instance().toggleMenu();
     expect(wrapper.state()).toEqual(expected);
   });
+
   describe('handleClick', () => {
     it('should call props.logoutUser, props.addMessage, and toggleMenu', () => {
       wrapper.setState({fullMenu: true})
       wrapper.find('#logout').simulate('click')
-      expect(mockFunc).toHaveBeenCalledTimes(2)
+      expect(mockFunc).toHaveBeenCalledTimes(3)
     })
   })
 
@@ -58,6 +60,7 @@ describe('Menu', () => {
 
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
+
     it('should call addMessage action when addMessage is called', () => {
       const mockDispatch = jest.fn();
       const actionToDispatch = addMessage();
@@ -65,6 +68,17 @@ describe('Menu', () => {
       const mappedProps = mapDispatchToProps(mockDispatch);
 
       mappedProps.addMessage();
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+
+    it('should call removeFavorites action when removeFavorites is called', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = removeFavorites();
+
+      const mappedProps = mapDispatchToProps(mockDispatch);
+
+      mappedProps.removeFavorites();
 
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
