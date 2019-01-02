@@ -1,5 +1,4 @@
 import { messageReducer } from './messageReducer';
-import * as actions from '../actions';
 
 describe('messageReducer', () => {
   it('should return a defaul state', () => {

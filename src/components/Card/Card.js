@@ -45,7 +45,7 @@ export const Card = ({
       </div>
     </div>
   );
-};
+}
 
 Card.propTypes = {
   addFavorite: PropTypes.func.isRequired,

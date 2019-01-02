@@ -1,5 +1,4 @@
 import { userReducer } from './userReducer';
-import * as actions from '../actions';
 
 describe('userReducer', () => {
   it('should return a default state', () => {
@@ -11,7 +10,7 @@ describe('userReducer', () => {
     const expected = null;
     const mockAction = { type: 'LOGOUT_USER' };
     const result = userReducer(null, mockAction);
-    expect(result).toEqual(null);
+    expect(result).toEqual(expected);
   });
   it('should return state with a user', () => {
     const mockAction = {
