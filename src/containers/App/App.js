@@ -88,5 +88,7 @@ export default withRouter(
 
 App.propTypes = {
   fetchMovies: PropTypes.func.isRequired,
-  addFavoritesToStore: PropTypes.func.isRequired
+  addFavoritesToStore: PropTypes.func.isRequired,
+  user: PropTypes.object,
+  addStoredUser: PropTypes.func
 };

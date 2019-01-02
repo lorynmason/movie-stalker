@@ -27,7 +27,12 @@ export class Menu extends Component {
   render() {
     let log = (
       <p>
-        <Link className="menu-item" id="login" to="/login" onClick={this.toggleMenu}>
+        <Link
+          className="menu-item"
+          id="login"
+          to="/login"
+          onClick={this.toggleMenu}
+        >
           Login
         </Link>
       </p>
@@ -52,7 +57,11 @@ export class Menu extends Component {
           <div className="menu-items">
             <button onClick={this.toggleMenu}>X</button>
             <p>
-              <Link className="menu-item a-tag" to="/" onClick={this.toggleMenu}>
+              <Link
+                className="menu-item a-tag"
+                to="/"
+                onClick={this.toggleMenu}
+              >
                 Home
               </Link>
             </p>
@@ -62,7 +71,7 @@ export class Menu extends Component {
                 className="menu-item a-tag"
                 to="/favorites"
                 onClick={this.toggleMenu}
-                >
+              >
                 Stalked: <span>{this.props.allFavorites.length}</span>
               </Link>
             </p>
@@ -91,5 +100,8 @@ export default connect(
 
 Menu.propTypes = {
   user: PropTypes.object,
-  logoutUser: PropTypes.func.isRequired
+  allFavorites: PropTypes.array.isRequired,
+  logoutUser: PropTypes.func.isRequired,
+  addMessage: PropTypes.func.isRequired,
+  removeFavorites: PropTypes.func.isRequired
 };
