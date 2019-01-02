@@ -15,6 +15,7 @@ Our goals for this project were to:
 
 ### Installation and Setup Instructions
 
+````
 Starting up the backend:
 
 git clone https://github.com/turingschool-examples/movie-tracker
@@ -36,24 +37,27 @@ cd into the 'movietracker-frontend' directory
 npm install
 
 npm start- say yes if asked if you should start the server on a new port
+````
 
 ### Team
 
 Tanj McMeans- [Github](https://github.com/TMcMeans)
+
 Loryn Mason- [Github](https://github.com/lorynmason)
+
 Mike Duke- [Github](https://github.com/mike-duke)
 
-Technologies and Resources:
-React
-React Router
-Redux
-Redux Thunks/Middleware
-Enzyme/Jest
-REST API
-HTML5
-SASS
-Git Rebase Workflow
-Github
+### Technologies and Resources:
+ *  React
+ *  React Router
+ *  Redux
+ *  Redux Thunks/Middleware
+ *  Enzyme/Jest
+ *  REST API
+ *  HTML5
+ *  SASS
+ *  Git Rebase Workflow
+ *  Github
 
 ### Original Wireframe
 
