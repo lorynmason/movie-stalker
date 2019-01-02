@@ -123,15 +123,3 @@ describe('App', () => {
     })
   });
 });
-
-
-// var localStorageMock = jest.fn().mockImplementation(() => {
-//   return {
-//     getItem: jest.fn().mockImplementation(() => {
-//       return {
-//         name: "Jason V",
-//         id: 1
-//       }
-//     })
-//   }
-// });
