@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme';
 import React from 'react';
 import { Login, mapStateToProps, mapDispatchToProps } from './Login';
 import { fetchUser } from '../../thunks/fetchUser';
@@ -9,51 +9,60 @@ jest.mock('../../thunks/postUser');
 
 describe('Login container', () => {
   it('should match the snapshot', () => {
-    let wrapper = shallow(<Login />, {disableLifecycleMethods: true})
-    expect(wrapper).toMatchSnapshot()
-  })
-})
+    let wrapper = shallow(<Login />, { disableLifecycleMethods: true });
+    expect(wrapper).toMatchSnapshot();
+  });
+  it('should call call focus on the emailInput on componentDidMount', () => {
+    const wrapper = mount(<Login />);
+    const { emailInput } = wrapper.instance();
+
+    jest.spyOn(emailInput.current, 'focus');
+
+    wrapper.instance().componentDidMount();
+
+    expect(emailInput.current.focus).toHaveBeenCalled();
+  });
+});
 
 describe('handleInputChange', () => {
   it('should update state on change', () => {
-    let wrapper = shallow(<Login />, {disableLifecycleMethods: true});
-    wrapper.find('#email-input').simulate('change', 
-    { 
-      target: 
-      { 
+    let wrapper = shallow(<Login />, { disableLifecycleMethods: true });
+    wrapper.find('#email-input').simulate('change', {
+      target: {
         value: 'john@gmail.com',
-        name: 'email' 
-      } 
-    })  
-    wrapper.find('#password-input').simulate('change', 
-    { 
-      target: 
-      { 
+        name: 'email'
+      }
+    });
+    wrapper.find('#password-input').simulate('change', {
+      target: {
         value: 'Hello',
-        name: 'password' 
-      } 
-    })   
+        name: 'password'
+      }
+    });
     const expected = {
       name: '',
       email: 'john@gmail.com',
       password: 'Hello',
-      errorMessage:'',
+      errorMessage: '',
       newUser: false
-    }
-    expect(wrapper.state()).toEqual(expected)
-  })
-})
+    };
+    expect(wrapper.state()).toEqual(expected);
+  });
+});
 
 describe('handleSubmit', () => {
   let wrapper;
   it('should call handleSubmit and should call addUserToStore if !newUser', () => {
-    const mockAddUserToStore = jest.fn()
-    wrapper = shallow(<Login addUserToStore={mockAddUserToStore}/>, {disableLifecycleMethods: true});
-    wrapper.handleSubmit = jest.fn()
-    wrapper.addUserToStore = mockAddUserToStore
+    const mockAddUserToStore = jest.fn();
+    wrapper = shallow(<Login addUserToStore={mockAddUserToStore} />, {
+      disableLifecycleMethods: true
+    });
+    wrapper.handleSubmit = jest.fn();
+    wrapper.addUserToStore = mockAddUserToStore;
 
     wrapper.find('form').simulate('submit', {
-      preventDefault: () => wrapper.handleSubmit()})
+      preventDefault: () => wrapper.handleSubmit()
+    });
 
     expect(wrapper.handleSubmit).toHaveBeenCalled()
     expect(wrapper.addUserToStore).toHaveBeenCalled();
@@ -65,42 +74,42 @@ describe('handleSubmit', () => {
     wrapper.handleSubmit = jest.fn()
     wrapper.addNewUserToStore = mockAddUserToStore
     wrapper.setState({newUser: true})
-
     wrapper.find('form').simulate('submit', {
-      preventDefault: () => wrapper.handleSubmit()})
-    expect(wrapper.addNewUserToStore).toHaveBeenCalled()
-  })
-})
+      preventDefault: () => wrapper.handleSubmit()
+    });
+    expect(wrapper.addNewUserToStore).toHaveBeenCalled();
+  });
+});
 
 describe('handleNewUser', () => {
   it('should toggle the state of newUser', () => {
-    let wrapper = shallow(<Login />, {disableLifecycleMethods: true});
-    
+    let wrapper = shallow(<Login />, { disableLifecycleMethods: true });
+
     wrapper.find('.create-account').simulate('click', {
       preventDefault: jest.fn()
-    })
+    });
     expect(wrapper.state().newUser).toEqual(true);
 
     wrapper.find('.create-account').simulate('click', {
       preventDefault: jest.fn()
-    })
+    });
     expect(wrapper.state().newUser).toEqual(false);
-  })
-})
+  });
+});
 
 describe('mapStateToProps', () => {
   it('should return an object with user', () => {
     const mockState = {
-      movies: [{tile: 'It', id: 0}],
+      movies: [{ tile: 'It', id: 0 }],
       user: null
-    }
+    };
     const expected = {
       user: null
-    }
-    const mappedProps = mapStateToProps(mockState)
-    expect(mappedProps).toEqual(expected)
-  })
-})
+    };
+    const mappedProps = mapStateToProps(mockState);
+    expect(mappedProps).toEqual(expected);
+  });
+});
 
 describe('mapDispatchToProps', () => {
   const mockDispatch = jest.fn()
