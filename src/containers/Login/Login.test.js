@@ -1,6 +1,11 @@
 import { shallow } from 'enzyme'
 import React from 'react';
 import { Login, mapStateToProps, mapDispatchToProps } from './Login';
+import { fetchUser } from '../../thunks/fetchUser';
+import { postUser } from '../../thunks/postUser';
+
+jest.mock('../../thunks/fetchUser');
+jest.mock('../../thunks/postUser');
 
 describe('Login container', () => {
   it('should match the snapshot', () => {
@@ -51,9 +56,9 @@ describe('handleSubmit', () => {
       preventDefault: () => wrapper.handleSubmit()})
 
     expect(wrapper.handleSubmit).toHaveBeenCalled()
-    expect(wrapper.addUserToStore).toHaveBeenCalled()
+    expect(wrapper.addUserToStore).toHaveBeenCalled();
+  });
 
-  })
   it('should call addNewUserToStore if new user',() => {
     const mockAddUserToStore = jest.fn()
     wrapper = shallow(<Login addNewUserToStore={mockAddUserToStore}/>, {disableLifecycleMethods: true});
@@ -99,15 +104,23 @@ describe('mapStateToProps', () => {
 
 describe('mapDispatchToProps', () => {
   const mockDispatch = jest.fn()
-  const mappedProps = mapDispatchToProps(mockDispatch)
+  const mappedProps = mapDispatchToProps(mockDispatch);
+  const email = 'jack@overlook.com';
+  const password = 'password';
 
   it('calls dispatch with an fetchUser thunks when addUserToStore is called', () => {
-    mappedProps.addUserToStore('john@gmail.com', 'password')
-    expect(mockDispatch).toHaveBeenCalled()
-  })
+    fetchUser.mockImplementation(() => {});
+    const expected = fetchUser(email, password);
+    mappedProps.addUserToStore('jack@overlook.com', 'password');
+    
+    expect(mockDispatch).toHaveBeenCalledWith(expected);
+  });
 
   it('calls dispatch with an postUser thunks when addNewUserToStore is called', () => {
-    mappedProps.addNewUserToStore('john@gmail.com', 'password', 'John')
-    expect(mockDispatch).toHaveBeenCalled()
-  })
-})
+    postUser.mockImplementation(() => {});
+    const userInfo = ('danny@shinning.com', 'password', 'Danny')
+    const expected = postUser(userInfo)
+    mappedProps.addNewUserToStore('danny@shinning.com', 'password', 'Danny');
+    expect(mockDispatch).toHaveBeenCalledWith(expected);
+  });
+});
