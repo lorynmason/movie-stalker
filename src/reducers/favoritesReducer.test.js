@@ -44,4 +44,14 @@ describe('favoritesReducer', () => {
     const result = favoritesReducer([], mockAction);
     expect(result).toEqual(expected);
   });
+  it('should return an empty array on the remove_favorites action', () => {
+    const mockAction = {
+      type: 'REMOVE_FAVORITES'
+    };
+
+    const expected = [];
+    const result = favoritesReducer([], mockAction);
+
+    expect(result).toEqual(expected);
+  });
 });
