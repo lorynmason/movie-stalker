@@ -113,132 +113,37 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": Array [
-        <p>
-          <Link
-            className="menu-item a-tag"
-            onClick={[Function]}
-            replace={false}
-            to="/"
-          >
-            Home
-          </Link>
-        </p>,
+      "children": <div
+        className="menu-items"
+      >
         <button
           onClick={[Function]}
         >
           X
-        </button>,
+        </button>
         <p>
           <Link
-            className="menu-item"
-            onClick={[Function]}
-            replace={false}
-            to="/login"
-          >
-            Login
-          </Link>
-        </p>,
-        <p>
-          <Link
-            className="menu-item a-tag"
-            onClick={[Function]}
-            replace={false}
-            to="/favorites"
-          >
-            Stalked: 
-            <span>
-              0
-            </span>
-          </Link>
-        </p>,
-      ],
-      "className": "full-menu",
-    },
-    "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": <Link
             className="menu-item a-tag"
             onClick={[Function]}
             replace={false}
             to="/"
           >
             Home
-          </Link>,
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "children": "Home",
-            "className": "menu-item a-tag",
-            "onClick": [Function],
-            "replace": false,
-            "to": "/",
-          },
-          "ref": null,
-          "rendered": "Home",
-          "type": [Function],
-        },
-        "type": "p",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "X",
-          "onClick": [Function],
-        },
-        "ref": null,
-        "rendered": "X",
-        "type": "button",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": <Link
+          </Link>
+        </p>
+        <p>
+          <Link
             className="menu-item"
+            id="login"
             onClick={[Function]}
             replace={false}
             to="/login"
           >
             Login
-          </Link>,
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "children": "Login",
-            "className": "menu-item",
-            "onClick": [Function],
-            "replace": false,
-            "to": "/login",
-          },
-          "ref": null,
-          "rendered": "Login",
-          "type": [Function],
-        },
-        "type": "p",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": <Link
+          </Link>
+        </p>
+        <p>
+          <Link
             className="menu-item a-tag"
             onClick={[Function]}
             replace={false}
@@ -248,54 +153,23 @@ ShallowWrapper {
             <span>
               0
             </span>
-          </Link>,
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "children": Array [
-              "Stalked: ",
-              <span>
-                0
-              </span>,
-            ],
-            "className": "menu-item a-tag",
-            "onClick": [Function],
-            "replace": false,
-            "to": "/favorites",
-          },
-          "ref": null,
-          "rendered": Array [
-            "Stalked: ",
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": 0,
-              },
-              "ref": null,
-              "rendered": 0,
-              "type": "span",
-            },
-          ],
-          "type": [Function],
-        },
-        "type": "p",
-      },
-    ],
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
+          </Link>
+        </p>
+      </div>,
+      "className": "full-menu",
+    },
+    "ref": null,
+    "rendered": Object {
       "instance": null,
       "key": undefined,
       "nodeType": "host",
       "props": Object {
         "children": Array [
+          <button
+            onClick={[Function]}
+          >
+            X
+          </button>,
           <p>
             <Link
               className="menu-item a-tag"
@@ -306,14 +180,10 @@ ShallowWrapper {
               Home
             </Link>
           </p>,
-          <button
-            onClick={[Function]}
-          >
-            X
-          </button>,
           <p>
             <Link
               className="menu-item"
+              id="login"
               onClick={[Function]}
               replace={false}
               to="/login"
@@ -335,10 +205,22 @@ ShallowWrapper {
             </Link>
           </p>,
         ],
-        "className": "full-menu",
+        "className": "menu-items",
       },
       "ref": null,
       "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "X",
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": "X",
+          "type": "button",
+        },
         Object {
           "instance": null,
           "key": undefined,
@@ -376,20 +258,9 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "X",
-            "onClick": [Function],
-          },
-          "ref": null,
-          "rendered": "X",
-          "type": "button",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
             "children": <Link
               className="menu-item"
+              id="login"
               onClick={[Function]}
               replace={false}
               to="/login"
@@ -405,6 +276,7 @@ ShallowWrapper {
             "props": Object {
               "children": "Login",
               "className": "menu-item",
+              "id": "login",
               "onClick": [Function],
               "replace": false,
               "to": "/login",
@@ -469,6 +341,246 @@ ShallowWrapper {
           "type": "p",
         },
       ],
+      "type": "div",
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <div
+          className="menu-items"
+        >
+          <button
+            onClick={[Function]}
+          >
+            X
+          </button>
+          <p>
+            <Link
+              className="menu-item a-tag"
+              onClick={[Function]}
+              replace={false}
+              to="/"
+            >
+              Home
+            </Link>
+          </p>
+          <p>
+            <Link
+              className="menu-item"
+              id="login"
+              onClick={[Function]}
+              replace={false}
+              to="/login"
+            >
+              Login
+            </Link>
+          </p>
+          <p>
+            <Link
+              className="menu-item a-tag"
+              onClick={[Function]}
+              replace={false}
+              to="/favorites"
+            >
+              Stalked: 
+              <span>
+                0
+              </span>
+            </Link>
+          </p>
+        </div>,
+        "className": "full-menu",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <button
+              onClick={[Function]}
+            >
+              X
+            </button>,
+            <p>
+              <Link
+                className="menu-item a-tag"
+                onClick={[Function]}
+                replace={false}
+                to="/"
+              >
+                Home
+              </Link>
+            </p>,
+            <p>
+              <Link
+                className="menu-item"
+                id="login"
+                onClick={[Function]}
+                replace={false}
+                to="/login"
+              >
+                Login
+              </Link>
+            </p>,
+            <p>
+              <Link
+                className="menu-item a-tag"
+                onClick={[Function]}
+                replace={false}
+                to="/favorites"
+              >
+                Stalked: 
+                <span>
+                  0
+                </span>
+              </Link>
+            </p>,
+          ],
+          "className": "menu-items",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "X",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": "X",
+            "type": "button",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <Link
+                className="menu-item a-tag"
+                onClick={[Function]}
+                replace={false}
+                to="/"
+              >
+                Home
+              </Link>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Home",
+                "className": "menu-item a-tag",
+                "onClick": [Function],
+                "replace": false,
+                "to": "/",
+              },
+              "ref": null,
+              "rendered": "Home",
+              "type": [Function],
+            },
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <Link
+                className="menu-item"
+                id="login"
+                onClick={[Function]}
+                replace={false}
+                to="/login"
+              >
+                Login
+              </Link>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Login",
+                "className": "menu-item",
+                "id": "login",
+                "onClick": [Function],
+                "replace": false,
+                "to": "/login",
+              },
+              "ref": null,
+              "rendered": "Login",
+              "type": [Function],
+            },
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <Link
+                className="menu-item a-tag"
+                onClick={[Function]}
+                replace={false}
+                to="/favorites"
+              >
+                Stalked: 
+                <span>
+                  0
+                </span>
+              </Link>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  "Stalked: ",
+                  <span>
+                    0
+                  </span>,
+                ],
+                "className": "menu-item a-tag",
+                "onClick": [Function],
+                "replace": false,
+                "to": "/favorites",
+              },
+              "ref": null,
+              "rendered": Array [
+                "Stalked: ",
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": 0,
+                  },
+                  "ref": null,
+                  "rendered": 0,
+                  "type": "span",
+                },
+              ],
+              "type": [Function],
+            },
+            "type": "p",
+          },
+        ],
+        "type": "div",
+      },
       "type": "div",
     },
   ],
