@@ -18,9 +18,16 @@ it('should call addFavoritesToStore if theres a user', () => {
   const user = {id: 1}
   const mockAddFavoritesToStore = jest.fn()
   const mockAddMessage = jest.fn()
-  let wrapper = shallow(<Message addMessage={mockAddMessage} addFavoritesToStore={mockAddFavoritesToStore} user={user} message={'message'}/>)
+  
+  shallow(
+    <Message  addMessage={mockAddMessage} 
+              addFavoritesToStore={mockAddFavoritesToStore} 
+              user={user} 
+              message={'message'}
+    />);
+  
   expect(mockAddFavoritesToStore).toHaveBeenCalled()
-})
+});
 
 describe('mapDispatchToProps', () => {
   const mockDispatch = jest.fn()
@@ -29,10 +36,10 @@ describe('mapDispatchToProps', () => {
   it('calls dispatch with an addMessage action when addMessage is called', () => {
     mappedProps.addMessage('There is a Message')
     expect(mockDispatch).toHaveBeenCalled()
-  })
+  });
 
   it('calls dispatch with an fetchFavorites thunks when addFavoritesToStore is called', () => {
     mappedProps.addFavoritesToStore(1)
     expect(mockDispatch).toHaveBeenCalled()
-  })
-})
+  });
+});

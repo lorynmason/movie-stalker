@@ -1,5 +1,4 @@
 import { favoritesReducer } from './favoritesReducer';
-import * as actions from '../actions';
 
 describe('favoritesReducer', () => {
   it('should return a default state', () => {
@@ -7,6 +6,7 @@ describe('favoritesReducer', () => {
     const result = favoritesReducer(undefined, {});
     expect(result).toEqual(expected);
   });
+
   it('should return state with favorite movies', () => {
     const mockFavoriteOne = {
       id: 7,

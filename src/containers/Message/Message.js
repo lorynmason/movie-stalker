@@ -31,12 +31,12 @@ export const Message = (props) => {
 export const mapStateToProps = (state) => ({
   message: state.message,
   user: state.user
-})
+});
 
 export const mapDispatchToProps = (dispatch) => ({
   addMessage: message => dispatch(addMessage(message)),
   addFavoritesToStore: (userId) => dispatch(fetchFavorites(userId))
-})
+});
 
 export default connect(
   mapStateToProps, mapDispatchToProps
