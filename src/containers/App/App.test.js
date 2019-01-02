@@ -1,9 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
+import { key } from '../../apikey';
 import { App, mapStateToProps, mapDispatchToProps } from './App';
 import { fetchMovies } from '../../thunks/fetchMovies';
 import { fetchFavorites } from '../../thunks/fetchFavorites';
+import { loginUser } from '../../actions';
+import LocalStorageMock from './localStorageMock';
+
+jest.mock('../../thunks/fetchMovies');
+jest.mock('../../thunks/fetchFavorites');
 
 describe('App', () => {
   const wrapper = shallow(
@@ -14,9 +20,11 @@ describe('App', () => {
   });
 
   it('should call fetchMovies when the component mounts', () => {
+    const expected = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=1&with_genres=27&without_genres=10751`;
     const wrapper = shallow(<App fetchMovies={jest.fn()} addFavoritesToStore={jest.fn()} />);
-
-    expect(wrapper.instance().props.fetchMovies).toHaveBeenCalled()
+    const { fetchMovies } = wrapper.instance().props
+    
+    expect(fetchMovies).toHaveBeenCalledWith(expected);
   })
 
   it('should call addFavoritesToStore if there is a user logged in', () => {
@@ -29,7 +37,30 @@ describe('App', () => {
     })
 
     expect(wrapper.instance().props.addFavoritesToStore).toHaveBeenCalledWith(2);
-  })
+  });
+
+  describe('checkLocalStorage', () => {
+    it('should pull a user from local storage and call addStoredUser with the user object', () => {
+      const mockUser = {name: 'Jason V', id: 1}
+      
+      window.localStorage = new LocalStorageMock();
+      localStorage.setItem('user', JSON.stringify(mockUser))
+
+      const wrapper = shallow(
+      <App 
+        addFavoritesToStore={jest.fn()} 
+        user={null} 
+        fetchMovies={jest.fn()} 
+      />);
+
+      wrapper.setProps({addStoredUser: jest.fn()});
+      const { addStoredUser } = wrapper.instance().props;
+      wrapper.instance().checkLocalStorage();
+      
+      expect(addStoredUser).toHaveBeenCalledWith(mockUser);
+    });
+  });
+
 
   describe('mapStateToProps', () => {
     it('should return a user object', () => {
@@ -61,21 +92,46 @@ describe('App', () => {
     const url = 'someplace.com';
 
     it('should dispatch fetchMovies thunk when fetchMovies is called from props', () => {
-      const thunkToDispatch = fetchMovies(url);
+      fetchMovies.mockImplementation(() => {});
+
+      const expected = fetchMovies(url);
 
       const mappedProps = mapDispatchToProps(mockDispatch);
       mappedProps.fetchMovies(url);
 
-      expect(mockDispatch).toHaveBeenCalledWith(thunkToDispatch);
+      expect(mockDispatch).toHaveBeenCalledWith(expected);
     })
 
     it('should dispatch fetchFavorites thunk when addFavoritesToStore is called from props', () => {
-      const thunkToDispatch = fetchFavorites(2);
+      fetchFavorites.mockImplementation(() => {})
+      const expected = fetchFavorites(2);
 
       const mappedProps = mapDispatchToProps(mockDispatch);
       mappedProps.addFavoritesToStore(2);
 
-      expect(mockDispatch).toHaveBeenCalledWith(thunkToDispatch);
+      expect(mockDispatch).toHaveBeenCalledWith(expected);
+    });
+
+    it('should dispatch loginUser action when addStoredUser is called', () => {
+      const mockUser = {name: "Bride Of Chucky", id: 4}
+      const expected = loginUser(mockUser);
+
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.addStoredUser(mockUser);
+
+      expect(mockDispatch).toHaveBeenCalledWith(expected);
     })
   });
 });
+
+
+// var localStorageMock = jest.fn().mockImplementation(() => {
+//   return {
+//     getItem: jest.fn().mockImplementation(() => {
+//       return {
+//         name: "Jason V",
+//         id: 1
+//       }
+//     })
+//   }
+// });
