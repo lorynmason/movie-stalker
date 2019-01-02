@@ -6,7 +6,7 @@ import { fetchFavorites } from '../../thunks/fetchFavorites';
 export const Message = (props) => {
   setTimeout(() => {
     props.addMessage(null)
-  }, 1500);
+  }, 5000);
 
   if(props.user) {
     props.addFavoritesToStore(props.user.id)
