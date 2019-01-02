@@ -47,7 +47,7 @@ export const CardContainer = ({
       />
     );
   });
-  
+
   return <div className="cardContainer">{cards}</div>;
 };
 
@@ -72,7 +72,7 @@ export default connect(
 CardContainer.propTypes = {
   addFavorite: PropTypes.func.isRequired,
   favorites: PropTypes.array.isRequired,
-  sendMessage: PropTypes.func,
+  addMessage: PropTypes.func.isRequired,
   removeFavorite: PropTypes.func.isRequired,
   movies: PropTypes.array.isRequired,
   user: PropTypes.object,
