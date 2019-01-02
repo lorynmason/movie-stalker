@@ -20,11 +20,15 @@ describe('App', () => {
   })
 
   it('should call addFavoritesToStore if there is a user logged in', () => {
-    const wrapper = shallow(<App addFavoritesToStore={jest.fn()} user={true} fetchMovies={jest.fn()} />)
+    const mockUser = {name: 'Chucky', id: 2}
+    const wrapper = shallow(<App addFavoritesToStore={jest.fn()} user={null} fetchMovies={jest.fn()} />)
     
-    expect(wrapper.instance().props.user).toEqual(true);
-    wrapper.update()
-    expect(wrapper.instance().props.addFavoritesToStore).toHaveBeenCalled();
+    expect(wrapper.instance().props.user).toEqual(null);
+    wrapper.setProps({
+      user: mockUser
+    })
+
+    expect(wrapper.instance().props.addFavoritesToStore).toHaveBeenCalledWith(2);
   })
 
   describe('mapStateToProps', () => {
