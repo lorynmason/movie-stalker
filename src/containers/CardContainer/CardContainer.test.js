@@ -7,7 +7,10 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import { postFavorites } from '../../thunks/postFavorites';
 import { deleteFavorite } from '../../thunks/deleteFavorite';
-import * as actions from '../../actions'; 
+import { addMessage } from '../../actions'; 
+
+jest.mock('../../thunks/postFavorites');
+jest.mock('../../thunks/deleteFavorite');
 
 describe('CardContainer', () => {
   const mockFunc = jest.fn();
@@ -113,30 +116,33 @@ describe('CardContainer', () => {
 
   describe('mapDispatchToProps', () => {
     const mockDispatch = jest.fn();
+    const mappedProps = mapDispatchToProps(mockDispatch)
     
     it('should dispatch postFavorites thunk when addFavorite is called from props', () => {
       const movie = {title: 'Jaws'}
+      postFavorites.mockImplementation(() => {});
+      const expected = postFavorites(movie, 2)
 
-      const mappedProps = mapDispatchToProps(mockDispatch);
-      mappedProps.addFavorite(movie, 2);
+      mappedProps.addFavorite(expected);
 
       expect(mockDispatch).toHaveBeenCalled();
     })
 
     it('should dispatch deleteFavorite thunk when removeFavorite is called from props', () => {
-      const mappedProps = mapDispatchToProps(mockDispatch);
+      deleteFavorite.mockImplementation(() => {});
+      const expected = deleteFavorite(2, 3);
       mappedProps.removeFavorite(2, 3);
 
-      expect(mockDispatch).toHaveBeenCalled();
+      expect(mockDispatch).toHaveBeenCalledWith(expected);
     })
 
     it('should dispatch addMessage action when addMessage is called from props', () => {
-      const actionToDispatch = actions.addMessage('this is my message');
+      const expected = addMessage('this is my message');
 
       const mappedProps = mapDispatchToProps(mockDispatch);
       mappedProps.addMessage('this is my message');
 
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+      expect(mockDispatch).toHaveBeenCalledWith(expected);
     })
   })
 });
