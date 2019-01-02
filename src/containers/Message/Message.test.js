@@ -1,6 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Message, mapDispatchToProps } from './Message';
+import { addMessage } from '../../actions';
+import { fetchFavorites } from '../../thunks/fetchFavorites';
+
+jest.mock('../../thunks/fetchFavorites');
 
 describe('Message Container', () => {
   let wrapper = shallow(<Message />)
@@ -33,13 +37,18 @@ describe('mapDispatchToProps', () => {
   const mockDispatch = jest.fn()
   const mappedProps = mapDispatchToProps(mockDispatch)
 
-  it('calls dispatch with an addMessage action when addMessage is called', () => {
-    mappedProps.addMessage('There is a Message')
-    expect(mockDispatch).toHaveBeenCalled()
+  it('calls dispatch with an addMessage thunk when addMessage is called', () => {
+    const expected = addMessage('You have a message');
+    mappedProps.addMessage('You have a message')
+    expect(mockDispatch).toHaveBeenCalledWith(expected)
   });
 
   it('calls dispatch with an fetchFavorites thunks when addFavoritesToStore is called', () => {
-    mappedProps.addFavoritesToStore(1)
-    expect(mockDispatch).toHaveBeenCalled()
+    fetchFavorites.mockImplementation(() => {})
+    const expected = fetchFavorites(2);
+
+    mappedProps.addFavoritesToStore(2);
+
+    expect(mockDispatch).toHaveBeenCalledWith(expected);
   });
 });
