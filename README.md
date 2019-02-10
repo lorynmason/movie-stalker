@@ -36,7 +36,7 @@ export const key = 'your key here'
 npm install
 
 npm start- say yes if asked if you should start the server on a new port
-```
+````
 
 ### Project Goals
 
