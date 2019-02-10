@@ -4,6 +4,10 @@ MOVIE TRACKER is a web based application built in React that allows the user to 
 
 ### Installation and Setup Instructions
 
+````
+go to https://www.themoviedb.org/documentation/api request an api key
+````
+
 ```
 Starting up the backend:
 
@@ -16,12 +20,18 @@ cd into the 'movietracker-backend' directory
 npm install
 
 npm start
-
+````
+````
 Starting up the frontend:
 
 git clone https://github.com/TMcMeans/movietracker-frontend
 
 cd into the 'movietracker-frontend' directory
+
+create a file in src called apikey.js
+
+set up file like this:
+export const key = 'your key here'
 
 npm install
 
