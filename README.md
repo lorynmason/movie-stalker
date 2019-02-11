@@ -11,7 +11,7 @@ go to https://www.themoviedb.org/documentation/api request an api key
 ```
 Starting up the backend:
 
-git clone https://github.com/turingschool-examples/movie-tracker
+git clone https://github.com/lorynmason/movie-stalker.git
 
 Rename the movie-tracker directory 'movietracker-backend'
 
