@@ -11,7 +11,7 @@ go to https://www.themoviedb.org/documentation/api request an api key
 ```
 Starting up the backend:
 
-git clone https://github.com/lorynmason/movie-stalker.git
+git clone https://github.com/turingschool-examples/movie-tracker
 
 Rename the movie-tracker directory 'movietracker-backend'
 
@@ -24,7 +24,7 @@ npm start
 ````
 Starting up the frontend:
 
-git clone https://github.com/TMcMeans/movietracker-frontend
+git clone https://github.com/lorynmason/movie-stalker.git
 
 cd into the 'movietracker-frontend' directory
 
